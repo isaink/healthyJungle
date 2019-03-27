@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import './../../styles/home.css';
 import Searchbar from  './Searchbar';
 // import { withRouter } from 'react-router';
-// import axios from 'axios';
+import axios from 'axios';
 let bg = require('./../../src/vector-banana-leaf-background.jpg');
-
-
-
+const {apiId, apiKey} = require('../../secrets.js')
 
 class Home extends Component {
   constructor(){
@@ -46,9 +44,10 @@ componentDidMount() {
 }
 
 
-let url = `https://api.edamam.com/search?q=${this.state.searchInput}&app_id=${apiId}&app_key=${apiKey}`
 
 getRecipes = () => {
+  const url = `https://api.edamam.com/search?q=${this.state.searchInput}&app_id=${apiId}&app_key=${apiKey}`
+
   axios.get(url)
         .then(res =>{
           console.log(res);
