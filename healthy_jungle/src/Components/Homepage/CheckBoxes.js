@@ -8,8 +8,8 @@ const Checkbox = (props) => {
     <input className="calories" onChange={props.checkAllApply} type="checkbox" name="calories" checked={props.state.history.f401to499} id="f401to499" /> 401-499
     <input className="calories" onChange={props.checkAllApply} type="checkbox" name="calories" checked={props.state.history.f501to599} id="f501to599" /> 501-599
     <input className="calories" onChange={props.checkAllApply} type="checkbox" name="calories" checked={props.state.history.over600} id="over600" /> Over 600
-diet
-    <div classNamdairy-free
+    </div>
+    <div className="diet">
     <input className="diet" onChange={props.checkAllApply} type="checkbox" name="diet" checked={props.state.history.keto} id="keto" /> Keto
     <input className="diet" onChange={props.checkAllApply} type="checkbox" name="diet" checked={props.state.history.balanced} id="balanced" /> Balanced
     <input className="diet" onChange={props.checkAllApply} type="checkbox" name="diet" checked={props.state.history.dairyfree} id="dairy-free" /> Dairy-Free
