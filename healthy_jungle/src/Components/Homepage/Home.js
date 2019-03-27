@@ -4,7 +4,8 @@ import Checkbox from './CheckBoxes'
 import Searchbar from  './Searchbar';
 // import { withRouter } from 'react-router';
 // import axios from 'axios';
-let bg = require('./../../src/vector-banana-leaf-background.jpg');
+let bg = require('./../../src/vector-banana-leaf-background.jpg')
+
 class Home extends Component {
   constructor(){
     super()
