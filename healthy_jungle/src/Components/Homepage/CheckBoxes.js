@@ -2,6 +2,7 @@ import React from 'react';
 
 const Checkbox = (props) => {
   return(
+    <form onSubmit={}>
     <div className="caloriesCheckbox">
     <input className="calories" onChange={props.checkAllApply} type="checkbox" name="calories" checked={props.state.calories.under300} id="under300" /> Under 300
     <input className="calories" onChange={props.checkAllApply} type="checkbox" name="calories" checked={props.state.calories.f301to399} id="f301to399" /> 301-399
@@ -22,6 +23,7 @@ const Checkbox = (props) => {
     <input className="diet" onChange={props.checkAllApply} type="checkbox" name="diet" checked={props.state.diet.lowsugar} id="lowsugar" /> Low Sugar
     <input className="diet" onChange={props.checkAllApply} type="checkbox" name="diet" checked={props.state.diet.lowfat} id="lowfat" /> Low Fat
     </div>
+    </form>
   )
 }
 

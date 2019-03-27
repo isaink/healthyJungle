@@ -32,6 +32,19 @@ class Home extends Component {
     };
   };
 
+  checkAllApply = (e) => {
+    let calories= {...this.state.calories}
+    let diet = {...this.state.diet}
+
+    let id = e.target.id
+
+    calories[id]= !calories[id]
+    diet[id] = !diet[id]
+    
+    this.setState({calories: calories, diet: diet})
+
+  }
+
   render(){
 
     return(
