@@ -19,8 +19,8 @@
     width: 500px;
     height: 37px;
     border: none;
-    border-radius: 5px;
-    margin-right: 5px;
+    border-top-left-radius: 27px;
+    border-bottom-left-radius: 27px;
     padding-left: 10px;
     text-align: left 10px;
 }
@@ -28,10 +28,12 @@
 #bttn_search{
     background-color: beige;
     color: green;
-    height: 37px;
+    height:  39px;
     width: 100px;
     border: none;
-    border-radius: 5px;
+    /* border-radius: 5px; */
+    border-top-right-radius: 27px;
+    border-bottom-right-radius: 27px;
 }
 
 .form_options{
@@ -40,17 +42,15 @@
     width: 50%;
     text-align: left;
 }
+
 .options{
-    /* display: hidden; */
-    /* background-color:  #215963; */
-}
-.options:hover{
     background-color:  #215963;
     margin: auto;
     width: 50%;
     border:none;
     border-radius: 10px;
 }
+
 .caloriesCheckbox{
     columns: 1;
 }
