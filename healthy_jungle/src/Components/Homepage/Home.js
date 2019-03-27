@@ -50,7 +50,7 @@ getRecipes = () => {
 
   axios.get(url)
         .then(res =>{
-          console.log(res);
+          console.log("res", res);
         })
 };
 
