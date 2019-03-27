@@ -64,7 +64,7 @@ class Home extends Component {
           </div>
 
             <div >
-              <Searchbar/>
+              <Searchbar searchInput={this.state.searchInput} handleChange={this.handleChange} findRecipe={this.findRecipe} />
             </div>
             <div>
               <Checkbox allChange={this.allChange}/>
