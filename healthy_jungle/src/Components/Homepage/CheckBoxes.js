@@ -2,6 +2,7 @@ import React from 'react';
 
 const Checkbox = (props) => {
   return(
+    <form>
 
     <form onSubmit={props.onSumbit}>
 

@@ -30,6 +30,16 @@ class Home extends Component {
 
       const cal_dietUrl = `https://api.edamam.com/search?q=&app_id=${apiId}&app_key=${apiKey}&calories=${this.state.calories}&diet=${this.state.diet}`
 
+
+  componentDidMount() {
+    this.getRecipes()
+  }
+
+
+
+  getRecipes = () => {
+    const url = `https://api.edamam.com/search?q=${this.state.searchInput}&app_id=${apiId}&app_key=${apiKey}`
+
       axios.get(cal_dietUrl)
         .then((res)=> {
           this.setState({
@@ -46,11 +56,12 @@ componentDidMount() {
 getRecipes = () => {
   const url = `https://api.edamam.com/search?q=${this.state.searchInput}&app_id=${apiId}&app_key=${apiKey}`
 
-  axios.get(url)
-        .then(res =>{
-          console.log(res);
-        })
-};
+
+    axios.get(url)
+          .then(res =>{
+            console.log(res);
+          })
+  };
 
   handleChange = (event) => {
     this.setState({
