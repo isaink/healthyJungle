@@ -8,8 +8,8 @@ let bg = require('./../../src/vector-banana-leaf-background.jpg');
 const {apiId, apiKey} = require('../../secrets.js')
 
 class Home extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
       diet: '',
       calories: '',
@@ -67,7 +67,10 @@ getRecipes = () => {
     }
 
 
-  }
+  };
+
+  
+
 
   render(){
 
