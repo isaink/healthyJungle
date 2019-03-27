@@ -36,15 +36,22 @@
 
 .form_options{
     display: grid;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 40% 80%;
     width: 50%;
-    margin: auto;
-    padding: 10px;
+    /* margin: auto; */
+    text-align: left;
+
+}
+.options{
+    /* display: hidden; */
+    /* background-color:  #215963; */
+}
+.options:hover{
     background-color:  #215963;
+    margin: auto;
+    width: 50%;
     border:none;
     border-radius: 10px;
-    text-align: left;
-    /* align: center; */
 }
 .caloriesCheckbox{
     columns: 1;
