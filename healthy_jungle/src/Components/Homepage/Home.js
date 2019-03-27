@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './../../styles/home.css';
+import Searchbar from  './Searchbar';
 // import { withRouter } from 'react-router';
 // import axios from 'axios';
 let bg = require('./../../src/vector-banana-leaf-background.jpg');
@@ -68,7 +69,15 @@ class Home extends Component {
           <header id='app_name'>
             <h1>HEALTHY JUNGLE</h1>
           </header>
-          <hr/>
+
+          <div>
+            <h3>Your next recipe is just 
+              <br/>Lion arounf the corner</h3>
+          </div>
+
+            <div >
+              <Searchbar/>
+            </div>
         </div>
       </>
     )
