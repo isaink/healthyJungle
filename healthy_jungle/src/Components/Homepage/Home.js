@@ -25,7 +25,6 @@ class Home extends Component {
 
 
 
-
   handleChange = (event) => {
     this.setState({
       searchInput: event.target.value
