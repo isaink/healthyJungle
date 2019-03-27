@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import './../../styles/home.css';
+import Checkbox from './CheckBoxes'
 import Searchbar from  './Searchbar';
 // import { withRouter } from 'react-router';
-// import axios from 'axios';
+import axios from 'axios';
 let bg = require('./../../src/vector-banana-leaf-background.jpg');
+const {apiId, apiKey} = require('../../secrets.js')
+
 class Home extends Component {
   constructor(){
     super()
@@ -31,8 +34,30 @@ class Home extends Component {
       searchInput: '',
       allRecipes: [],
       recipeOptionTypedIn: []
+      }
     };
-  };
+
+
+  allChange = (e) => {
+     this.setState({[e.target.name]:e.target.value})
+   }
+
+
+
+componentDidMount() {
+  this.getRecipes()
+}
+
+
+
+getRecipes = () => {
+  const url = `https://api.edamam.com/search?q=${this.state.searchInput}&app_id=${apiId}&app_key=${apiKey}`
+
+  axios.get(url)
+        .then(res =>{
+          console.log(res);
+        })
+};
 
 
   handleChange = (event) => {
@@ -68,10 +93,15 @@ class Home extends Component {
           <div>
             <h3>Your next recipe is just 
               <br/>Lion around the corner</h3>
+
+
           </div>
 
             <div >
-              <Searchbar/>
+              <Searchbar searchInput={this.state.searchInput} handleChange={this.handleChange} findRecipe={this.findRecipe} />
+            </div>
+            <div>
+              <Checkbox allChange={this.allChange}/>
             </div>
         </div>
       </>
