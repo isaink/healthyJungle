@@ -43,6 +43,7 @@
     background-color:  #215963;
     border:none;
     border-radius: 10px;
+    text-align: left;
     /* align: center; */
 }
 .caloriesCheckbox{
