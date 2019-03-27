@@ -15,13 +15,29 @@ class Home extends Component {
       calories: '',
       searchInput: '',
       allRecipes: [],
-      recipeOptionTypedIn: []
+      recipeOptionTypedIn: [],
+      buttonText: "Done",
+      calorie_dietRecipes: []
       }
     };
 
   allChange = (e) => {
-     this.setState({[e.target.name]:e.target.value})
+     this.setState({[e.target.name]:e.target.value , buttonText: "Find"})
    }
+
+   onSumbit = (e) => {
+     e.preventDefault()
+
+      const cal_dietUrl = `https://api.edamam.com/search?q=&app_id=${apiId}&app_key=${apiKey}&calories=${this.state.calories}&diet=${this.state.diet}`
+
+      axios.get(cal_dietUrl)
+        .then((res)=> {
+          this.setState({
+            calorie_dietRecipes: res.data
+          })
+        })
+
+    };
 
 componentDidMount() {
   this.getRecipes()
@@ -69,13 +85,16 @@ getRecipes = () => {
           <div className='welcome_msg'>
             <p>Your next recipe is just  <br/> lion around the corner</p>
           </div>
-            <Searchbar searchInput={this.state.searchInput} handleChange={this.handleChange} findRecipe={this.findRecipe} />
-            
-          <div className='options'>
-            <p>REFINE SEARCH BY</p>
-            <Checkbox allChange={this.allChange}/>
-          </div>
-            
+         
+
+            <div className='options'>
+              <Searchbar searchInput={this.state.searchInput} handleChange={this.handleChange} findRecipe={this.findRecipe} getRecipes={this.getRecipes}/>
+            </div>
+            <div>
+                <p>REFINE SEARCH BY</p>
+              <Checkbox allChange={this.allChange} onSumbit={this.onSumbit} buttonText={this.state.buttonText}/>
+            </div>
+
         </div>
       </>
     )
