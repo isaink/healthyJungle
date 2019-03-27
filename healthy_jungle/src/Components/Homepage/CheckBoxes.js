@@ -2,7 +2,7 @@ import React from 'react';
 
 const Checkbox = (props) => {
   return(
-    <form onSubmit={this.}>
+    <form onSubmit={props.onSumbit}>
 
     <div className="caloriesCheckbox">
     <input className="calories" onChange={props.allChange} type="radio" name="calories" value="under300" id="under300" /> Under 300
@@ -18,15 +18,15 @@ const Checkbox = (props) => {
     <input className="diet" onChange={props.allChange} type="radio" name="diet" value="dairy-free" id="dairy-free" /> Dairy-Free
     <input className="diet" onChange={props.allChange} type="radio" name="diet" value="Vegan" id="Vegan" /> Vegan
     <input className="diet" onChange={props.allChange} type="radio" name="diet" value="Vegetarian" id="Vegetarian" /> Vegetarian
-    <input className="diet" onChange={props.allChange} type="radio" name="diet" value="lowcarb" id="lowcarb" /> Low Carb
-    <input className="diet" onChange={props.allChange} type="radio" name="diet" value="highprotein" id="highprotein" /> High Protein
-    <input className="diet" onChange={props.allChange} type="radio" name="diet" value="glutenfree" id="glutenfree" /> Gluten-Free
-    <input className="diet" onChange={props.allChange} type="radio" name="diet" value="highfiber" id="highfiber" /> High Fiber
-    <input className="diet" onChange={props.allChange} type="radio" name="diet" value="lowsugar" id="lowsugar" /> Low Sugar
-    <input className="diet" onChange={props.allChange} type="radio" name="diet" value="lowfat" id="lowfat" /> Low Fat
+    <input className="diet" onChange={props.allChange} type="radio" name="diet" value="low-carb" id="lowcarb" /> Low Carb
+    <input className="diet" onChange={props.allChange} type="radio" name="diet" value="high-protein" id="highprotein" /> High Protein
+    <input className="diet" onChange={props.allChange} type="radio" name="diet" value="gluten-free" id="glutenfree" /> Gluten-Free
+    <input className="diet" onChange={props.allChange} type="radio" name="diet" value="high-fiber" id="highfiber" /> High Fiber
+    <input className="diet" onChange={props.allChange} type="radio" name="diet" value="low-sugar" id="lowsugar" /> Low Sugar
+    <input className="diet" onChange={props.allChange} type="radio" name="diet" value="low-fat" id="lowfat" /> Low Fat
     </div>
 
-    <button>Submit</button>
+    <button>{props.buttonText}</button>
     </form>
   )
 }
