@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './../../styles/home.css';
+import Checkbox from './CheckBoxes'
 import Searchbar from  './Searchbar';
 // import { withRouter } from 'react-router';
 import axios from 'axios';
@@ -10,32 +11,19 @@ class Home extends Component {
   constructor(){
     super()
     this.state = {
-
-      calories : {
-        under300: false,
-        f301to399: false,
-        f401to499: false,
-        f501to599: false,
-        over600: false,
-      },
-      diet : {
-        keto: false,
-        balanced: false,
-        dairyfree: false,
-        Vegan: false,
-        Vegetarian: false,
-        lowcarb: false,
-        highprotein: false,
-        glutenfree: false,
-        highfiber: false,
-        lowsugar: false,
-        lowfat: false
-      },
+      calories : "",
+      diet : "",
       searchInput: '',
       allRecipes: [],
       recipeOptionTypedIn: []
+      }
     };
-  };
+
+
+  allChange = (e) => {
+     e.preventDefault();
+     this.setState({[e.target.name]:e.target.value})
+   }
 
 
 
@@ -92,10 +80,14 @@ getRecipes = () => {
           <div>
             <h3>Your next recipe is just
               <br/>Lion arounf the corner</h3>
+
           </div>
 
             <div >
-              <Searchbar/>
+              <Searchbar searchInput={this.state.searchInput} handleChange={this.handleChange} findRecipe={this.findRecipe} />
+            </div>
+            <div>
+              <Checkbox allChange={this.allChange}/>
             </div>
         </div>
       </>
