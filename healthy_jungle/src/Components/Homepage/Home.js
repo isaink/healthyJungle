@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './../../styles/home.css';
 import Checkbox from './CheckBoxes'
 import Searchbar from  './Searchbar';
-// import { withRouter } from 'react-router';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 let bg = require('./../../img/vector-banana-leaf-background.jpg');
 const {apiId, apiKey} = require('../../secrets.js')
@@ -29,14 +29,16 @@ class Home extends Component {
   onSumbit = (e) => {
     e.preventDefault()
 
-    const cal_dietUrl = `https://api.edamam.com/search?q=&app_id=${apiId}&app_key=${apiKey}&calories=${this.state.calories}&diet=${this.state.diet}`
 
-    axios.get(cal_dietUrl)
-      .then((res)=> {
-        this.setState({
-          calorie_dietRecipes: res.data,
-        })
-      })
+     const cal_dietUrl = `https://api.edamam.com/search?q=&app_id=${apiId}&app_key=${apiKey}&calories=${this.state.calories}&diet=${this.state.diet}`
+
+     axios.get(cal_dietUrl)
+       .then((res)=> {
+         this.setState({
+           calorie_dietRecipes: res.data
+         })
+       })
+
   };
 
   componentDidMount() {
@@ -47,12 +49,15 @@ class Home extends Component {
     const url = `https://api.edamam.com/search?q=${this.state.searchInput}&app_id=${apiId}&app_key=${apiKey}`
 
       axios.get(url)
+
         .then((res)=> {
           this.setState({
             calorie_dietRecipes: res.data
           })
         })
-    };
+
+  };
+
   handleChange = (event) => {
     this.setState({
       searchInput: event.target.value
@@ -73,9 +78,19 @@ class Home extends Component {
         recipeOptionTypedIn: recipeSearch,
         searchInput: ''
       })
+
     } else {
       return <p>Not found</p>
     }
+
+
+    if(this.state.recipeOptionTypedIn) {
+      return <Redirect to='/allrecipes/filter' />
+    } else {
+      return null
+    }
+  }
+
   };
 
   toggleOptions = () => {
@@ -83,6 +98,7 @@ class Home extends Component {
       refineSearch: true
     })
   };
+
 
   render(){
 
