@@ -8,8 +8,57 @@ class Home extends Component {
     super()
     this.state = {
 
+      calories : {
+        under300: false,
+        f301to399: false,
+        f401to499: false,
+        f501to599: false,
+        over600: false,
+      },
+      diet : {
+        keto: false,
+        balanced: false,
+        dairyfree: false,
+        Vegan: false,
+        Vegetarian: false,
+        lowcarb: false,
+        highprotein: false,
+        glutenfree: false,
+        highfiber: false,
+        lowsugar: false,
+        lowfat: false
+      },
+      searchInput: '',
+      allRecipes: [],
+      recipeOptionTypedIn: []
     };
   };
+
+
+  handleChange = (event) => {
+    this.setState({
+      searchInput: event.target.value
+    })
+  }
+
+  findRecipe = () => {
+    let recipeSearch = this.state.allRecipes.filter(recipe => {
+      if(recipe.q.toLowerCase().includes(this.state.searchInput.toLowerCase())) {
+        return true
+      } else {
+        return false
+      }
+    })
+
+    if(recipeSearch) {
+      this.setState({
+        recipeOptionTypedIn: recipeSearch,
+        searchInput: ''
+      })
+    } else {
+      return <p>Not found</p>
+    }
+  }
 
   render(){
 
