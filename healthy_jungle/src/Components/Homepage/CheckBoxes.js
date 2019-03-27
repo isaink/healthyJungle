@@ -2,8 +2,6 @@ import React from 'react';
 
 const Checkbox = (props) => {
   return(
-    <form>
-
     <form onSubmit={props.onSumbit} className='form_options'>
 
     <div className="caloriesCheckbox">
