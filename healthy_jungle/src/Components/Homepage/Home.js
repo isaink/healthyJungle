@@ -28,7 +28,8 @@ class Home extends Component {
         lowfat: false
       },
       searchInput: '',
-      allRecipes: []
+      allRecipes: [],
+      recipeOptionTypedIn: []
     };
   };
 
@@ -50,7 +51,7 @@ class Home extends Component {
 
     if(recipeSearch) {
       this.setState({
-        songTypedIn: songSearch,
+        recipeOptionTypedIn: recipeSearch,
         searchInput: ''
       })
     } else {
