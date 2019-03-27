@@ -1,13 +1,14 @@
 .App {
   text-align: center;
-  background-color: #215963;
+  background-color: #47878e;
 
 }
 
 .app_name{
   font-family: 'Gloria Hallelujah', cursive;
-  color: white;
-  background-color: #215963;
+  color: beige;
+  background-color: #47878e;
+  /* background-color: beige; */
   margin: 0;
   padding: 0;
 }

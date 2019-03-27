@@ -17,7 +17,8 @@ class Home extends Component {
       allRecipes: [],
       recipeOptionTypedIn: [],
       buttonText: "Done",
-      calorie_dietRecipes: []
+      calorie_dietRecipes: [],
+      refineSearch: false,
       }
     };
 
@@ -28,6 +29,7 @@ class Home extends Component {
   onSumbit = (e) => {
     e.preventDefault()
 
+
      const cal_dietUrl = `https://api.edamam.com/search?q=&app_id=${apiId}&app_key=${apiKey}&calories=${this.state.calories}&diet=${this.state.diet}`
 
      axios.get(cal_dietUrl)
@@ -36,13 +38,12 @@ class Home extends Component {
            calorie_dietRecipes: res.data
          })
        })
+
   };
 
   componentDidMount() {
     this.getRecipes()
   }
-
-
 
   getRecipes = () => {
     const url = `https://api.edamam.com/search?q=${this.state.searchInput}&app_id=${apiId}&app_key=${apiKey}`
@@ -54,7 +55,6 @@ class Home extends Component {
             calorie_dietRecipes: res.data
           })
         })
-
 
   };
 
@@ -83,12 +83,22 @@ class Home extends Component {
       return <p>Not found</p>
     }
 
+
     if(this.state.recipeOptionTypedIn) {
       return <Redirect to='/allrecipes/filter' />
     } else {
       return null
     }
   }
+
+  };
+
+  toggleOptions = () => {
+    this.setState({
+      refineSearch: true
+    })
+  };
+
 
   render(){
 
@@ -101,8 +111,13 @@ class Home extends Component {
               <Searchbar searchInput={this.state.searchInput} handleChange={this.handleChange} findRecipe={this.findRecipe} getRecipes={this.getRecipes}/>
 
             <div className='options'>
-                <p>REFINE SEARCH BY</p>
-              <Checkbox allChange={this.allChange} onSumbit={this.onSumbit} buttonText={this.state.buttonText}/>
+                <p onClick={this.toggleOptions}>REFINE SEARCH BY</p>
+                
+                {this.state.refineSearch 
+                  ? <Checkbox allChange={this.allChange} onSumbit={this.onSumbit} buttonText={this.state.buttonText}/> 
+                  : null 
+                }
+      
             </div>
 
         </div>
