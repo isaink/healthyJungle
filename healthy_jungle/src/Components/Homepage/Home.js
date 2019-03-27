@@ -11,26 +11,8 @@ class Home extends Component {
   constructor(){
     super()
     this.state = {
-      calories : {
-        under300: false,
-        f301to399: false,
-        f401to499: false,
-        f501to599: false,
-        over600: false,
-      },
-      diet : {
-        keto: false,
-        balanced: false,
-        dairyfree: false,
-        Vegan: false,
-        Vegetarian: false,
-        lowcarb: false,
-        highprotein: false,
-        glutenfree: false,
-        highfiber: false,
-        lowsugar: false,
-        lowfat: false
-      },
+      diet: '',
+      calories: '',
       searchInput: '',
       allRecipes: [],
       recipeOptionTypedIn: []
@@ -41,6 +23,7 @@ class Home extends Component {
   allChange = (e) => {
      this.setState({[e.target.name]:e.target.value})
    }
+
 
 
 
@@ -58,7 +41,6 @@ getRecipes = () => {
           console.log("res", res);
         })
 };
-
 
   handleChange = (event) => {
     this.setState({
@@ -83,6 +65,8 @@ getRecipes = () => {
     } else {
       return <p>Not found</p>
     }
+
+
   }
 
   render(){
