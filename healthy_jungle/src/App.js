@@ -7,6 +7,10 @@ class App extends Component {
   render() {
     return (
       <div className="App" >
+          <header className='app_name'>
+            <h1>HEALTHY JUNGLE</h1>
+          </header>
+          
         <Switch>
           <Route exact path='/' component={Home} />
         </Switch>

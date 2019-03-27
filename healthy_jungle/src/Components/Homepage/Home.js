@@ -8,7 +8,6 @@ class Home extends Component {
   constructor(){
     super()
     this.state = {
-
       calories : {
         under300: false,
         f301to399: false,
@@ -66,13 +65,9 @@ class Home extends Component {
     return(
       <>
         <div className='ctnr_home' style={{backgroundImage: `url(${bg})`, backgroundSize: 'cover'}}>
-          <header id='app_name'>
-            <h1>HEALTHY JUNGLE</h1>
-          </header>
-
           <div>
             <h3>Your next recipe is just 
-              <br/>Lion arounf the corner</h3>
+              <br/>Lion around the corner</h3>
           </div>
 
             <div >
