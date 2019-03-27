@@ -1,8 +1,55 @@
 .ctnr_home{
-    display: grid;
-    grid-template-rows: '';
     height: 980px;
     font-size: 20px;
     margin: 0;
     padding: 0;
+    background-color: #215963;
+}
+
+.welcome_msg{
+    font-family: 'EB Garamond', serif;
+    padding: 10px;
+    color: #215963;
+}
+
+.searchbar-form{
+   margin-bottom: 10px;
+}
+.input{
+    width: 500px;
+    height: 37px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 5px;
+    padding-left: 10px;
+    text-align: left 10px;
+}
+
+#bttn_search{
+    background-color: beige;
+    color: green;
+    height: 37px;
+    width: 100px;
+    border: none;
+    border-radius: 5px;
+}
+
+.form_options{
+    display: grid;
+    grid-template-columns: 20% 80%;
+    width: 50%;
+    margin: auto;
+    padding: 10px;
+    background-color:  #215963;
+    border:none;
+    border-radius: 10px;
+    text-align: left;
+    /* align: center; */
+}
+.caloriesCheckbox{
+    columns: 1;
+}
+
+.diet{
+    columns: 2;
 }

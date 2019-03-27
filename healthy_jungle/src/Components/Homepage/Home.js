@@ -4,7 +4,7 @@ import Checkbox from './CheckBoxes'
 import Searchbar from  './Searchbar';
 // import { withRouter } from 'react-router';
 import axios from 'axios';
-let bg = require('./../../src/vector-banana-leaf-background.jpg');
+let bg = require('./../../img/vector-banana-leaf-background.jpg');
 const {apiId, apiKey} = require('../../secrets.js')
 
 class Home extends Component {
@@ -20,7 +20,6 @@ class Home extends Component {
       calorie_dietRecipes: []
       }
     };
-
 
   allChange = (e) => {
      this.setState({[e.target.name]:e.target.value , buttonText: "Find"})
@@ -43,8 +42,6 @@ class Home extends Component {
 componentDidMount() {
   this.getRecipes()
 }
-
-
 
 getRecipes = () => {
   const url = `https://api.edamam.com/search?q=${this.state.searchInput}&app_id=${apiId}&app_key=${apiKey}`
@@ -78,8 +75,6 @@ getRecipes = () => {
     } else {
       return <p>Not found</p>
     }
-
-
   }
 
   render(){
@@ -87,12 +82,11 @@ getRecipes = () => {
     return(
       <>
         <div className='ctnr_home' style={{backgroundImage: `url(${bg})`, backgroundSize: 'cover'}}>
-          <div>
-            <h3>Your next recipe is just
-              <br/>Lion around the corner</h3>
-
-
+          <div className='welcome_msg'>
+            <p>Your next recipe is just  <br/> lion around the corner</p>
           </div>
+            <Searchbar searchInput={this.state.searchInput} handleChange={this.handleChange} findRecipe={this.findRecipe} />
+            <Checkbox allChange={this.allChange}/>
 
             <div >
               <Searchbar searchInput={this.state.searchInput} handleChange={this.handleChange} findRecipe={this.findRecipe} getRecipes={this.getRecipes}/>
@@ -100,6 +94,7 @@ getRecipes = () => {
             <div>
               <Checkbox allChange={this.allChange} onSumbit={this.onSumbit} buttonText={this.state.buttonText}/>
             </div>
+
         </div>
       </>
     )
