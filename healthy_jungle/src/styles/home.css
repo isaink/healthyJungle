@@ -34,6 +34,21 @@
     border-radius: 5px;
 }
 
-.form_checkbox{
+.form_options{
+    display: grid;
+    grid-template-columns: 20% 80%;
+    width: 50%;
+    margin: auto;
+    padding: 10px;
+    background-color:  #215963;
+    border:none;
+    border-radius: 10px;
+    /* align: center; */
+}
+.caloriesCheckbox{
+    columns: 1;
+}
 
+.diet{
+    columns: 2;
 }
