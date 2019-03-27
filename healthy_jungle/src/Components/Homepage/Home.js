@@ -4,7 +4,7 @@ import Checkbox from './CheckBoxes'
 import Searchbar from  './Searchbar';
 // import { withRouter } from 'react-router';
 import axios from 'axios';
-let bg = require('./../../src/vector-banana-leaf-background.jpg');
+let bg = require('./../../img/vector-banana-leaf-background.jpg');
 const {apiId, apiKey} = require('../../secrets.js')
 
 class Home extends Component {
@@ -19,19 +19,13 @@ class Home extends Component {
       }
     };
 
-
   allChange = (e) => {
      this.setState({[e.target.name]:e.target.value})
    }
 
-
-
-
 componentDidMount() {
   this.getRecipes()
 }
-
-
 
 getRecipes = () => {
   const url = `https://api.edamam.com/search?q=${this.state.searchInput}&app_id=${apiId}&app_key=${apiKey}`
@@ -65,8 +59,6 @@ getRecipes = () => {
     } else {
       return <p>Not found</p>
     }
-
-
   }
 
   render(){
