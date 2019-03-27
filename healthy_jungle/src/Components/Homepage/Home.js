@@ -25,22 +25,20 @@ class Home extends Component {
    }
 
 
-
-
-componentDidMount() {
-  this.getRecipes()
-}
+  componentDidMount() {
+    this.getRecipes()
+  }
 
 
 
-getRecipes = () => {
-  const url = `https://api.edamam.com/search?q=${this.state.searchInput}&app_id=${apiId}&app_key=${apiKey}`
+  getRecipes = () => {
+    const url = `https://api.edamam.com/search?q=${this.state.searchInput}&app_id=${apiId}&app_key=${apiKey}`
 
-  axios.get(url)
-        .then(res =>{
-          console.log(res);
-        })
-};
+    axios.get(url)
+          .then(res =>{
+            console.log(res);
+          })
+  };
 
   handleChange = (event) => {
     this.setState({
