@@ -2,7 +2,7 @@ import React from 'react';
 
 const Checkbox = (props) => {
   return(
-    <form onSubmit={this.}>
+    <form onSubmit={props.handleSubmit}>
 
     <div className="caloriesCheckbox">
     <input className="calories" onChange={props.allChange} type="radio" name="calories" value="under300" id="under300" /> Under 300
