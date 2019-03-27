@@ -1,25 +1,30 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import AllergiesForm from './AllergiesForm'
 
-class DisplayRecipes extends Component {
 
-displaySearchedRecipes = () => {
-  return this.props.recipeOptionTypedIn.map(recipes => {
+class Recipes extends Component {
+
+  state = {
+    allergies: ''
+  }
+
+  handleAllergyChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+    
+  render(){
     return (
       <div>
-      
+        <AllergiesForm handleAllergyChange={this.handleAllergyChange} allergies={this.state.allergies}/>
       </div>
-    )
-  })
-}
-
-  render(){
-    return(
-      <>
-      <h1>searched recipes</h1>
-
-      </>
     )
   }
 }
 
-export default DisplayRecipes;
+
+
+
+export default Recipes

@@ -1,8 +1,60 @@
 .ctnr_home{
-    display: grid;
-    grid-template-rows: '';
     height: 980px;
     font-size: 20px;
     margin: 0;
     padding: 0;
+    background-color: #215963;
+}
+
+.welcome_msg{
+    font-family: 'EB Garamond', serif;
+    padding: 10px;
+    color: #215963;
+}
+
+.searchbar-form{
+   margin-bottom: 10px;
+}
+.input{
+    width: 500px;
+    height: 37px;
+    border: none;
+    border-top-left-radius: 27px;
+    border-bottom-left-radius: 27px;
+    padding-left: 10px;
+    text-align: left 10px;
+}
+
+#bttn_search{
+    background-color: beige;
+    color: green;
+    height:  39px;
+    width: 100px;
+    border: none;
+    /* border-radius: 5px; */
+    border-top-right-radius: 27px;
+    border-bottom-right-radius: 27px;
+}
+
+.form_options{
+    display: grid;
+    grid-template-columns: 40% 90%;
+    width: 50%;
+    text-align: left;
+}
+
+.options{
+    background-color:  #215963;
+    margin: auto;
+    width: 50%;
+    border:none;
+    border-radius: 10px;
+}
+
+.caloriesCheckbox{
+    columns: 1;
+}
+
+.diet{
+    columns: 2;
 }
