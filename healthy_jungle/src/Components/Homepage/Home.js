@@ -26,11 +26,37 @@ class Home extends Component {
         highfiber: false,
         lowsugar: false,
         lowfat: false
-      }
-
-
+      },
+      searchInput: '',
+      allRecipes: []
     };
   };
+
+
+  handleChange = (event) => {
+    this.setState({
+      searchInput: event.target.value
+    })
+  }
+
+  findRecipe = () => {
+    let recipeSearch = this.state.allRecipes.filter(recipe => {
+      if(recipe.q.toLowerCase().includes(this.state.searchInput.toLowerCase())) {
+        return true
+      } else {
+        return false
+      }
+    })
+
+    if(recipeSearch) {
+      this.setState({
+        songTypedIn: songSearch,
+        searchInput: ''
+      })
+    } else {
+      return <p>Not found</p>
+    }
+  }
 
   render(){
 
