@@ -90,19 +90,11 @@ getRecipes = () => {
     return(
       <>
         <div className='ctnr_home' style={{backgroundImage: `url(${bg})`, backgroundSize: 'cover'}}>
-          <div>
-            <h3>Your next recipe is just 
-              <br/>Lion around the corner</h3>
-
-
+          <div className='welcome_msg'>
+            <p>Your next recipe is just  <br/> lion around the corner</p>
           </div>
-
-            <div >
-              <Searchbar searchInput={this.state.searchInput} handleChange={this.handleChange} findRecipe={this.findRecipe} />
-            </div>
-            <div>
-              <Checkbox allChange={this.allChange}/>
-            </div>
+            <Searchbar searchInput={this.state.searchInput} handleChange={this.handleChange} findRecipe={this.findRecipe} />
+            <Checkbox allChange={this.allChange}/>
         </div>
       </>
     )
