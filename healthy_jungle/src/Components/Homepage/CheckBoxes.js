@@ -3,9 +3,12 @@ import React from 'react';
 const Checkbox = (props) => {
   return(
 <<<<<<< HEAD
+<<<<<<< HEAD
     <form onSubmit={props.handleSubmit}>
 =======
 
+=======
+>>>>>>> 8a9b598954c8673645140fde0773868a6e2853a6
     <form onSubmit={props.onSumbit} className='form_options'>
 >>>>>>> d2bf0a0c3661dacc97e5fa67f5601aadc896daaf
 
