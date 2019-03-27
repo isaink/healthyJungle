@@ -71,12 +71,12 @@ class Home extends Component {
           </header>
 
           <div>
-            <h3>Your next recipe is just 
+            <h3>Your next recipe is just
               <br/>Lion arounf the corner</h3>
           </div>
 
             <div >
-              <Searchbar/>
+              <Searchbar searchInput={this.state.searchInput} handleChange={this.handleChange} findRecipe={this.findRecipe} />
             </div>
         </div>
       </>
