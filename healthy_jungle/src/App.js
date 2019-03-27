@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import Home from './Components/Homepage/Home'
 
 class App extends Component {
   render() {
     return (
-      <h1> hey </h1>
+      <Home />
     );
   }
 }
