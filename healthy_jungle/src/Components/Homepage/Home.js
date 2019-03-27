@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './../../styles/home.css';
-import { withRouter } from 'react-router';
-import axios from 'axios';
-
+// import { withRouter } from 'react-router';
+// import axios from 'axios';
+let bg = require('./../../src/vector-banana-leaf-background.jpg');
 class Home extends Component {
   constructor(){
     super()
     this.state = {
+
       calories : {
         under300: false,
         f301to399: false,
@@ -63,7 +64,12 @@ class Home extends Component {
 
     return(
       <>
-      <h1>Home</h1>
+        <div className='ctnr_home' style={{backgroundImage: `url(${bg})`, backgroundSize: 'cover'}}>
+          <header id='app_name'>
+            <h1>HEALTHY JUNGLE</h1>
+          </header>
+          <hr/>
+        </div>
       </>
     )
   }
