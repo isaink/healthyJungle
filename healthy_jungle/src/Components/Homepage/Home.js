@@ -44,6 +44,7 @@ class Home extends Component {
 
 
 
+
 componentDidMount() {
   this.getRecipes()
 }
@@ -58,7 +59,6 @@ getRecipes = () => {
           console.log(res);
         })
 };
-
 
   handleChange = (event) => {
     this.setState({
@@ -83,6 +83,8 @@ getRecipes = () => {
     } else {
       return <p>Not found</p>
     }
+
+
   }
 
   render(){
