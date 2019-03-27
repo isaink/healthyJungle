@@ -36,11 +36,9 @@
 
 .form_options{
     display: grid;
-    grid-template-columns: 40% 80%;
+    grid-template-columns: 40% 90%;
     width: 50%;
-    /* margin: auto; */
     text-align: left;
-
 }
 .options{
     /* display: hidden; */
