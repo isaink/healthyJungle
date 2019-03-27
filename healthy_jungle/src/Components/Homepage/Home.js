@@ -51,7 +51,7 @@ componentDidMount() {
 
 
 getRecipes = () => {
-  const url = `https://api.edamam.com/search?q=${this.state.searchInput}&app_id=${apiId}&app_key=${apiKey}`
+  const url = `https://api.edamam.com/search?q=${this.state.searchInput}&app_id=${apiId}&app_key=${apiKey}&calories${this.state.calories}&diet=${this.state.diet}`
 
   axios.get(url)
         .then(res =>{
