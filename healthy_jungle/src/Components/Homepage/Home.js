@@ -11,8 +11,26 @@ class Home extends Component {
   constructor(){
     super()
     this.state = {
-      calories : "",
-      diet : "",
+      calories : {
+        under300: false,
+        f301to399: false,
+        f401to499: false,
+        f501to599: false,
+        over600: false,
+      },
+      diet : {
+        keto: false,
+        balanced: false,
+        dairyfree: false,
+        Vegan: false,
+        Vegetarian: false,
+        lowcarb: false,
+        highprotein: false,
+        glutenfree: false,
+        highfiber: false,
+        lowsugar: false,
+        lowfat: false
+      },
       searchInput: '',
       allRecipes: [],
       recipeOptionTypedIn: []
@@ -21,7 +39,6 @@ class Home extends Component {
 
 
   allChange = (e) => {
-     e.preventDefault();
      this.setState({[e.target.name]:e.target.value})
    }
 
@@ -73,13 +90,10 @@ getRecipes = () => {
     return(
       <>
         <div className='ctnr_home' style={{backgroundImage: `url(${bg})`, backgroundSize: 'cover'}}>
-          <header id='app_name'>
-            <h1>HEALTHY JUNGLE</h1>
-          </header>
-
           <div>
-            <h3>Your next recipe is just
-              <br/>Lion arounf the corner</h3>
+            <h3>Your next recipe is just 
+              <br/>Lion around the corner</h3>
+
 
           </div>
 
