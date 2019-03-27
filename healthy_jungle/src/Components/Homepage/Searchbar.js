@@ -14,7 +14,7 @@ class Searchbar extends Component {
           <input
             type='text'
             onChange={this.props.handleChange}
-            placeholder='Search for recipe'
+            placeholder='What are you hunting for ?'
             value={this.props.searchInput}
           />
           <button type='submit'>Submit</button>

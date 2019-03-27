@@ -15,8 +15,6 @@ class Home extends Component {
       allRecipes: [],
       recipeOptionTypedIn: []
       }
-
-
     };
 
 
@@ -62,7 +60,7 @@ class Home extends Component {
 
           <div>
             <h3>Your next recipe is just
-              <br/>Lion arounf the corner</h3>
+              <br/>Lion around the corner...</h3>
           </div>
 
             <div >
