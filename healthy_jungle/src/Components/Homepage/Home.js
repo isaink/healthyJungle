@@ -3,15 +3,34 @@ import './../../styles/home.css';
 import Checkbox from './CheckBoxes'
 import Searchbar from  './Searchbar';
 // import { withRouter } from 'react-router';
-// import axios from 'axios';
-let bg = require('./../../src/vector-banana-leaf-background.jpg')
+import axios from 'axios';
+let bg = require('./../../src/vector-banana-leaf-background.jpg');
+const {apiId, apiKey} = require('../../secrets.js')
 
 class Home extends Component {
   constructor(){
     super()
     this.state = {
-      calories : '',
-      diet : '',
+      calories : {
+        under300: false,
+        f301to399: false,
+        f401to499: false,
+        f501to599: false,
+        over600: false,
+      },
+      diet : {
+        keto: false,
+        balanced: false,
+        dairyfree: false,
+        Vegan: false,
+        Vegetarian: false,
+        lowcarb: false,
+        highprotein: false,
+        glutenfree: false,
+        highfiber: false,
+        lowsugar: false,
+        lowfat: false
+      },
       searchInput: '',
       allRecipes: [],
       recipeOptionTypedIn: []
@@ -24,6 +43,22 @@ class Home extends Component {
    }
 
 
+
+
+componentDidMount() {
+  this.getRecipes()
+}
+
+
+
+getRecipes = () => {
+  const url = `https://api.edamam.com/search?q=${this.state.searchInput}&app_id=${apiId}&app_key=${apiKey}`
+
+  axios.get(url)
+        .then(res =>{
+          console.log(res);
+        })
+};
 
   handleChange = (event) => {
     this.setState({
@@ -57,17 +92,15 @@ class Home extends Component {
     return(
       <>
         <div className='ctnr_home' style={{backgroundImage: `url(${bg})`, backgroundSize: 'cover'}}>
-          <header id='app_name'>
-            <h1>HEALTHY JUNGLE</h1>
-          </header>
-
           <div>
             <h3>Your next recipe is just
-              <br/>Lion around the corner...</h3>
+              <br/>Lion around the corner</h3>
+
+
           </div>
 
             <div >
-              <Searchbar/>
+              <Searchbar searchInput={this.state.searchInput} handleChange={this.handleChange} findRecipe={this.findRecipe} getRecipes={this.getRecipes}/>
             </div>
             <div>
               <Checkbox allChange={this.allChange}/>
