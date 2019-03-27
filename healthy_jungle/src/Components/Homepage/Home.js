@@ -23,13 +23,21 @@ class Home extends Component {
 
   allChange = (e) => {
      this.setState({[e.target.name]:e.target.value , buttonText: "Find"})
-   }
+  }
 
-   onSumbit = (e) => {
-     e.preventDefault()
+  onSumbit = (e) => {
+    e.preventDefault()
 
-      const cal_dietUrl = `https://api.edamam.com/search?q=&app_id=${apiId}&app_key=${apiKey}&calories=${this.state.calories}&diet=${this.state.diet}`
+     const cal_dietUrl = `https://api.edamam.com/search?q=&app_id=${apiId}&app_key=${apiKey}&calories=${this.state.calories}&diet=${this.state.diet}`
 
+     axios.get(cal_dietUrl)
+       .then((res)=> {
+         this.setState({
+           calorie_dietRecipes: res.data
+         })
+       })
+
+  };
 
   componentDidMount() {
     this.getRecipes()
@@ -40,7 +48,7 @@ class Home extends Component {
   getRecipes = () => {
     const url = `https://api.edamam.com/search?q=${this.state.searchInput}&app_id=${apiId}&app_key=${apiKey}`
 
-      axios.get(cal_dietUrl)
+      axios.get(url)
         .then((res)=> {
           this.setState({
             calorie_dietRecipes: res.data
@@ -48,21 +56,6 @@ class Home extends Component {
         })
 
     };
-
-componentDidMount() {
-  this.getRecipes()
-}
-
-getRecipes = () => {
-  const url = `https://api.edamam.com/search?q=${this.state.searchInput}&app_id=${apiId}&app_key=${apiKey}`
-
-
-    axios.get(url)
-          .then(res =>{
-            console.log(res);
-          })
-  };
-
   handleChange = (event) => {
     this.setState({
       searchInput: event.target.value
