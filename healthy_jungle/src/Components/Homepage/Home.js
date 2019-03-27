@@ -23,6 +23,8 @@ class Home extends Component {
    }
 
 
+
+
   handleChange = (event) => {
     this.setState({
       searchInput: event.target.value
@@ -46,6 +48,8 @@ class Home extends Component {
     } else {
       return <p>Not found</p>
     }
+
+
   }
 
   render(){
