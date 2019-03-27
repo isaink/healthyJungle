@@ -11,8 +11,8 @@ class Home extends Component {
   constructor(){
     super()
     this.state = {
-      calories : "",
-      diet : "",
+      calories : '',
+      diet : '',
       searchInput: '',
       allRecipes: [],
       recipeOptionTypedIn: []
@@ -21,7 +21,6 @@ class Home extends Component {
 
 
   allChange = (e) => {
-     e.preventDefault();
      this.setState({[e.target.name]:e.target.value})
    }
 
