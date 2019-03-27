@@ -2,7 +2,8 @@ import React from 'react';
 
 const Checkbox = (props) => {
   return(
-    <form className='form_checkbox'>
+
+    <form  className='form_checkbox' onSubmit={this.}>
 
     <div className="caloriesCheckbox">
     <input className="calories" onChange={props.allChange} type="radio" name="calories" value="under300" id="under300" /> Under 300
@@ -26,6 +27,7 @@ const Checkbox = (props) => {
     <input className="diet" onChange={props.allChange} type="radio" name="diet" value="lowfat" id="lowfat" /> Low Fat
     </div>
 
+    <button>Submit</button>
     </form>
   )
 }
