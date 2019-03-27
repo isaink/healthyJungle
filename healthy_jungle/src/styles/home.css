@@ -1,3 +1,10 @@
-.ctnr{
-    display: grid
+.ctnr_home{
+    /* display: grid; */
+    min-height: 980px;
+}
+#app_name{
+    font-family: 'Gloria Hallelujah', cursive;
+    color: white;
+    background-color: #F7EE6B;
+    font-size: 20px;
 }
