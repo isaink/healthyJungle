@@ -70,8 +70,12 @@ getRecipes = () => {
             <p>Your next recipe is just  <br/> lion around the corner</p>
           </div>
             <Searchbar searchInput={this.state.searchInput} handleChange={this.handleChange} findRecipe={this.findRecipe} />
+            
+          <div className='options'>
+            <p>REFINE SEARCH BY</p>
             <Checkbox allChange={this.allChange}/>
-
+          </div>
+            
         </div>
       </>
     )
