@@ -7,6 +7,7 @@ import axios from 'axios';
 let bg = require('./../../img/vector-banana-leaf-background.jpg');
 const {apiId, apiKey} = require('../../secrets.js')
 
+
 class Home extends Component {
   constructor(){
     super()
@@ -30,7 +31,7 @@ class Home extends Component {
     e.preventDefault()
 
 
-     const cal_dietUrl = `https://api.edamam.com/search?q=&app_id=${apiId}&app_key=${apiKey}&diet=${this.state.diet}&from=0&to=25&calories=${this.state.calories}&limit=20`
+     const cal_dietUrl = `https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q=&app_id=${apiId}&app_key=${apiKey}&diet=${this.state.diet}&from=0&to=25&calories=${this.state.calories}`
 
      axios.get(cal_dietUrl)
        .then((res)=> {
@@ -39,6 +40,7 @@ class Home extends Component {
          })
        })
 
+
   };
 
   componentDidMount() {
@@ -46,7 +48,7 @@ class Home extends Component {
   }
 
   getRecipes = () => {
-    const url = `https://api.edamam.com/search?q=${this.state.searchInput}&app_id=${apiId}&app_key=${apiKey}&from=0&to=25`
+    const url = `https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q=${this.state.searchInput}&app_id=${apiId}&app_key=${apiKey}&from=0&to=25`
 
       axios.get(url)
         .then((res)=> {
@@ -72,8 +74,10 @@ class Home extends Component {
 
   render(){
 
+
     return(
       <>
+
         <div className='ctnr_home' style={{backgroundImage: `url(${bg})`, backgroundSize: 'cover'}}>
           <div className='welcome_msg'>
             <p>Your next recipe is just  <br/> lion around the corner</p>
@@ -97,4 +101,4 @@ class Home extends Component {
 
 };
 
-export default Home;
+export default Home

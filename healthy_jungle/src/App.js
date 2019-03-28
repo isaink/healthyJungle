@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Home from './Components/Homepage/Home';
+import Home from './Components/Homepage/Home.context';
 import Recipes from './Components/RecipesPage/Recipes'
 import { Switch, Route } from 'react-router-dom'
 import './App.css';
