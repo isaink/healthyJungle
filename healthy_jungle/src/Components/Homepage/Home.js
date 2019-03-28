@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom'
+import {Switch, Route, withRouter} from 'react-router-dom';
 import './../../styles/home.css';
 import Checkbox from './CheckBoxes'
 import Searchbar from  './Searchbar';
+import Recipes from './../RecipesPage/Recipes';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 let bg = require('./../../img/vector-banana-leaf-background.jpg');
@@ -103,7 +104,7 @@ class Home extends Component {
 
 
   render(){
-    const { buttonText, searchInput,refineSearch, calorie_dietRecipes  } = this.state;
+    const { buttonText, searchInput,refineSearch, calorie_dietRecipes, allRecipes, recipeOptionTypedIn  } = this.state;
 
     return(
       <>
@@ -112,15 +113,7 @@ class Home extends Component {
             <p>Your next recipe is just  <br/> lion around the corner</p>
           </div>
 
-              <Searchbar searchInput={this.state.searchInput} handleChange={this.handleChange} findRecipe={this.findRecipe} getRecipes={this.getRecipes} recipeOptionTypedIn={this.state.recipeOptionTypedIn}/>
-
-            <div className='options'>
-                <p onClick={this.toggleOptions}>REFINE SEARCH BY</p>
-
-                {this.state.refineSearch
-                  ? <Checkbox allChange={this.allChange} onSumbit={this.onSumbit} buttonText={this.state.buttonText}/>
-                  : null
-              <Searchbar searchInput={searchInput} handleChange={this.handleChange} findRecipe={this.findRecipe} getRecipes={this.getRecipes}/>
+              <Searchbar searchInput={searchInput} handleChange={this.handleChange} findRecipe={this.findRecipe} getRecipes={this.getRecipes} recipeOptionTypedIn={recipeOptionTypedIn}/>
 
             <div className='options'>
                 <p onClick={this.toggleOptions}>REFINE SEARCH BY</p>
@@ -134,12 +127,24 @@ class Home extends Component {
             </div>
 
         </div>
+
+        <Switch>
+               <Route
+                        exact path='/'
+                        render={ props => (
+                            <Recipes
+                                { ...props}
+                                allRecipes={allRecipes}
+                                calorie_dietRecipes={calorie_dietRecipes}
+                            />  
+                        )} 
+                    />
+
+
+               </Switch>
       </>
     )
   }
-
-}
-
 
 };
 
