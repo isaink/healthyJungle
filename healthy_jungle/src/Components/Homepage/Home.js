@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'
 import './../../styles/home.css';
 import Checkbox from './CheckBoxes'
 import Searchbar from  './Searchbar';
@@ -6,6 +7,7 @@ import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 let bg = require('./../../img/vector-banana-leaf-background.jpg');
 const {apiId, apiKey} = require('../../secrets.js')
+
 
 class Home extends Component {
   constructor(){
@@ -30,12 +32,12 @@ class Home extends Component {
     e.preventDefault()
 
 
-     const cal_dietUrl = `https://api.edamam.com/search?q=&app_id=${apiId}&app_key=${apiKey}&calories=${this.state.calories}&diet=${this.state.diet}`
+     const cal_dietUrl = `https://api.edamam.com/search?q=&app_id=${apiId}&app_key=${apiKey}&diet=${this.state.diet}&from=0&to=25&calories=${this.state.calories}&limit=20`
 
      axios.get(cal_dietUrl)
        .then((res)=> {
          this.setState({
-           calorie_dietRecipes: res.data
+           calorie_dietRecipes: res.data.hits
          })
        })
 
@@ -46,18 +48,14 @@ class Home extends Component {
   }
 
   getRecipes = () => {
-    const url = `https://api.edamam.com/search?q=${this.state.searchInput}&app_id=${apiId}&app_key=${apiKey}`
+    const url = `https://api.edamam.com/search?q=${this.state.searchInput}&app_id=${apiId}&app_key=${apiKey}&from=0&to=25`
 
       axios.get(url)
         .then((res)=> {
           this.setState({
-            calorie_dietRecipe: res.data
+            allRecipes: res.data.hits
           })
         })
-        .catch(err => {
-          return Error
-        })
-
   };
 
   handleChange = (event) => {
@@ -65,6 +63,7 @@ class Home extends Component {
       searchInput: event.target.value
     })
   }
+
 
   findRecipe = () => {
     let recipeSearch = this.state.allRecipes.filter(recipe => {
@@ -95,6 +94,7 @@ class Home extends Component {
 
   };
 
+
   toggleOptions = () => {
     this.setState({
       refineSearch: true
@@ -103,6 +103,7 @@ class Home extends Component {
 
 
   render(){
+    const { buttonText, searchInput,refineSearch, calorie_dietRecipes  } = this.state;
 
     return(
       <>
@@ -110,6 +111,7 @@ class Home extends Component {
           <div className='welcome_msg'>
             <p>Your next recipe is just  <br/> lion around the corner</p>
           </div>
+
               <Searchbar searchInput={this.state.searchInput} handleChange={this.handleChange} findRecipe={this.findRecipe} getRecipes={this.getRecipes} recipeOptionTypedIn={this.state.recipeOptionTypedIn}/>
 
             <div className='options'>
@@ -118,6 +120,15 @@ class Home extends Component {
                 {this.state.refineSearch
                   ? <Checkbox allChange={this.allChange} onSumbit={this.onSumbit} buttonText={this.state.buttonText}/>
                   : null
+              <Searchbar searchInput={searchInput} handleChange={this.handleChange} findRecipe={this.findRecipe} getRecipes={this.getRecipes}/>
+
+            <div className='options'>
+                <p onClick={this.toggleOptions}>REFINE SEARCH BY</p>
+  
+                {refineSearch 
+                  ? <Checkbox allChange={this.allChange} onSumbit={this.onSumbit} buttonText={buttonText} calorie_dietRecipes={calorie_dietRecipes}/> 
+                  : null 
+
                 }
 
             </div>
@@ -126,6 +137,11 @@ class Home extends Component {
       </>
     )
   }
+
 }
 
-export default Home;
+
+};
+
+
+export default withRouter(Home);
