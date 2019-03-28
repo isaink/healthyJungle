@@ -51,7 +51,7 @@ displaySearchedRecipes = (props) => {
 
 
   render(){
-    console.log(this.props.calorie_dietRecipes, 'pros recipes')
+    console.log( 'pros recipes', this.props)
     return (
       <div>
         <AllergiesForm handleAllergyChange={this.handleAllergyChange} checkAllergy={this.state.checkAllergy} allergies={this.state.allergies} />
