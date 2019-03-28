@@ -6,6 +6,7 @@ import AllergiesForm from './AllergiesForm'
 
 import axios from 'axios'
 const {apiId, apiKey} = require('../../secrets.js')
+
 // let bg = require('./../../img/suppliesCooking.jpg');
 let bg2 = require('./../../img/KitchenTools_Feat.png');
 
