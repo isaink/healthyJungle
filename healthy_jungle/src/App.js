@@ -1,6 +1,6 @@
 import './App.css';
 import React, { Component } from 'react';
-import Home from './Components/Homepage/Home';
+import Home from './Components/Homepage/Home.context';
 import Recipes from './Components/RecipesPage/Recipes'
 import axios from 'axios'
 import { Switch, Route, withRouter } from 'react-router-dom'

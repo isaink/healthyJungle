@@ -14,13 +14,16 @@ class Home extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     this.props.getRecipes()
+
   }
 
 
   render(){
 
+
     return(
       <>
+
         <div className='ctnr_home' style={{backgroundImage: `url(${bg})`, backgroundSize: 'cover'}}>
           <div className='welcome_msg'>
             <p>Your next recipe is just  <br/> lion around the corner</p>
@@ -106,6 +109,5 @@ class Home extends Component {
   }
 
 };
-
 
 export default withRouter(Home);

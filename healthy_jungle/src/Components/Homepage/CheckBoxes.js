@@ -5,7 +5,7 @@ const Checkbox = (props) => {
     <form onSubmit={props.onSumbit} className='form_options'>
 
     <div className="caloriesCheckbox">
-      <input className="calories" onChange={props.allChange} type="radio" name="calories" value="under300" id="under300" /> Under 300
+      <input className="calories" onChange={props.allChange} type="radio" name="calories" value="0-300" id="under300" /> Under 300
       <br/>
       <input className="calories" onChange={props.allChange} type="radio" name="calories" value="301-399" id="f301to399" /> 301-399
       <br/>
@@ -13,7 +13,7 @@ const Checkbox = (props) => {
       <br/>
       <input className="calories" onChange={props.allChange} type="radio" name="calories" value="501-599" id="f501to599" /> 501-599
       <br/>
-      <input className="calories" onChange={props.allChange} type="radio" name="calories" value="Over 600" id="over600" /> Over 600
+      <input className="calories" onChange={props.allChange} type="radio" name="calories" value="600-4000" id="over600" /> Over 600
     </div>
 
     <div className="diet">
