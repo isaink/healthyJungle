@@ -1,8 +1,7 @@
+import './../../styles/home.css';
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import './../../styles/home.css';
 let bg = require('./../../img/vector-banana-leaf-background.jpg');
-// const {apiId, apiKey} = require('../../secrets.js')
 
 class Home extends Component {
   

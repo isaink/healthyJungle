@@ -55,7 +55,8 @@ button{
     border-radius: 5px;
 }
 #linked_recipes{
-    background-color: beige;
+    background-color: white;
+    margin:20px;
 }
 .ctnr_allergies{
     background: rgba(127,165,106, 0.9);
