@@ -32,6 +32,12 @@ class Recipes extends Component {
     submitted: false,
   }
 
+  toggleOptions = () => {
+    this.setState({
+      refineSearch: true
+    })
+  };
+
   handleAllergyChange = (event) => {
     let checkAllergy = {...this.state.checkAllergy}
 
@@ -72,11 +78,10 @@ displayRecipes = () => {
         )
       }
      )
-    return <> {oneRecipe}</>
+    return <> {oneRecipe} </>
   };
 
-handleChange = (e) => {
-
+  handleChange = (e) => {
       let searchResult = this.props.allRecipes.filter(recipe => {
         return recipe.recipe.label.toLowerCase() === this.state.textInput.toLowerCase()})
 
@@ -162,8 +167,6 @@ handleChange = (e) => {
                     )
                   })}
                 </div>
-
-                
               </button>
             </Link>
           </>
@@ -229,7 +232,6 @@ handleChange = (e) => {
                   })}
                 </div>
 
-                
               </button>
             </Link>
           </>
@@ -356,8 +358,8 @@ if (this.state.submitted) {
       </form>
       </div>
       <div>
-        <p onClick={this.state.toggleOptions} id='refined_search'> REFINE SEARCH BY : </p>
-        {this.props.refineSearch ?
+        <p onClick={this.toggleOptions} id='refined_search'> REFINE SEARCH BY : Allergies </p>
+        {this.state.refineSearch ?
         <AllergiesForm handleAllergyChange={this.handleAllergyChange} checkAllergy={this.state.checkAllergy} allergies={this.state.allergies} />
         : null }
 </div>
@@ -375,8 +377,8 @@ if (this.state.submitted) {
       </form>
       </div>
       <div>
-        <p onClick={this.state.toggleOptions} id='refined_search'> REFINE SEARCH BY : </p>
-        {this.props.refineSearch ?
+        <p onClick={this.toggleOptions} id='refined_search'> REFINE SEARCH BY : Allergies  </p>
+        {this.state.refineSearch ?
         <AllergiesForm handleAllergyChange={this.handleAllergyChange} checkAllergy={this.state.checkAllergy} allergies={this.state.allergies} />
           : null }
     </div>
