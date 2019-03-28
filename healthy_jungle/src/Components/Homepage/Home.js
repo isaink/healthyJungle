@@ -1,28 +1,25 @@
 import React, { Component } from 'react';
-import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import './../../styles/home.css';
-import Checkbox from './CheckBoxes'
-import Searchbar from  './Searchbar';
-// import Recipes from './../RecipesPage/Recipes';
-// import axios from 'axios';
+
 let bg = require('./../../img/vector-banana-leaf-background.jpg');
 // const {apiId, apiKey} = require('../../secrets.js')
 
-
 class Home extends Component {
+  
   handleSubmit = (event) => {
     event.preventDefault()
     this.props.getRecipes()
-  }
-
+  };
 
   render(){
-
     return(
       <>
         <div className='ctnr_home' style={{backgroundImage: `url(${bg})`, backgroundSize: 'cover'}}>
           <div className='welcome_msg'>
-            <p>Your next recipe is just  <br/> lion around the corner</p>
+              <div className='welcoming'> 
+                <p className='inner_ctnr'> <b id='quotes'>"</b> Your next recipe is just lion around the corner <b id='quotes'>"</b>  <br/> <span id='flecha'> → </span> </p>
+              </div>
           </div>
 
           <div className='searchbar-form'>
@@ -37,15 +34,13 @@ class Home extends Component {
               <button id='bttn_search'type='submit'>Submit</button>
             </form>
 
-          </div>
-
-
+          <p onClick={this.props.toggleOptions} className='refined_search'> REFINE SEARCH BY : </p>
           <div className='options'>
-          <p onClick={this.props.toggleOptions}>REFINE SEARCH BY</p>
-
-          {this.props.refineSearch ?
+            {this.props.refineSearch ?
           <div>
+
           <form onSubmit={this.props.onSumbit} className='form_options'>
+
           <div className="caloriesCheckbox">
             <input className="calories" onChange={this.props.allChange} type="radio" name="calories" value="0-300" id="under300" /> Under 300
             <br/>
@@ -80,6 +75,7 @@ class Home extends Component {
           </div>
 
         </div>
+      </div>
       </>
     )
   }
