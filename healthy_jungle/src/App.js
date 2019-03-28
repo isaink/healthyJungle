@@ -58,7 +58,7 @@ class App extends Component {
     e.preventDefault()
 
 
-     const cal_dietUrl = `https://api.edamam.com/search?q=&app_id=${apiId}&app_key=${apiKey}&diet=${this.state.diet}&from=0&to=25&calories=${this.state.calories}`
+     const cal_dietUrl = `https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q=&app_id=${apiId}&app_key=${apiKey}&diet=${this.state.diet}&from=0&to=25&calories=${this.state.calories}`
 
      axios.get(cal_dietUrl)
        .then((res)=> {
