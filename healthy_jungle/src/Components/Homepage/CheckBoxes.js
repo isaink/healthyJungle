@@ -52,7 +52,7 @@ const Checkbox = (props) => {
       <input className="diet" onChange={props.allChange} type="radio" name="diet" value="lowfat" id="lowfat" /> Low Fat
     </div>
 
-    <button>{props.buttonText}</button>
+    <button className='bttn_find'>{props.buttonText}</button>
     </form>
   )
 };

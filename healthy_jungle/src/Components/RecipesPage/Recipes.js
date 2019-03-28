@@ -5,7 +5,8 @@ class Recipes extends Component {
 
   state = {
     allergies: '',
-    checkAllergy: { gluten: false,
+    checkAllergy: { 
+    gluten: false,
     dairy: false,
     eggs: false,
     soy: false,
@@ -24,8 +25,10 @@ class Recipes extends Component {
     checkAllergy[id] = !checkAllergy[id]
 
     this.setState({checkAllergy: checkAllergy})
-}
-
+  }
+  componentDidMount(){
+    this.props.fetchRecipes()
+  }
   render(){
     console.log( 'pros recipes', this.props)
     return (

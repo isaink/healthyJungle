@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom';
 import './../../styles/home.css';
 import Checkbox from './CheckBoxes'
 import Searchbar from  './Searchbar';
-import Recipes from './../RecipesPage/Recipes';
+// import Recipes from './../RecipesPage/Recipes';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 let bg = require('./../../img/vector-banana-leaf-background.jpg');
@@ -101,20 +101,22 @@ class Home extends Component {
 
 
   render(){
-    const { buttonText, searchInput,refineSearch, calorie_dietRecipes, allRecipes, recipeOptionTypedIn  } = this.state;
+    const { buttonText, searchInput,refineSearch, calorie_dietRecipes, recipeOptionTypedIn  } = this.state;
 
     return(
       <>
         <div className='ctnr_home' style={{backgroundImage: `url(${bg})`, backgroundSize: 'cover'}}>
           <div className='welcome_msg'>
-            <p>Your next recipe is just  <br/> lion around the corner</p>
+              <div className='welcoming'> 
+                <p className='inner_ctnr'> <b id='quotes'>"</b> Your next recipe is just lion around the corner <b id='quotes'>"</b>  <br/> <p id='flecha'> → </p> </p>
+              </div>
           </div>
 
               <Searchbar searchInput={searchInput} handleChange={this.handleChange} findRecipe={this.findRecipe} getRecipes={this.getRecipes} recipeOptionTypedIn={recipeOptionTypedIn}/>
 
-            <div className='options'>
-                <p onClick={this.toggleOptions}>REFINE SEARCH BY</p>
-  
+            
+                <p onClick={this.toggleOptions} className='refined_search'>REFINE SEARCH BY :</p>
+                <div className='options'>
                 {refineSearch 
                   ? <Checkbox allChange={this.allChange} onSumbit={this.onSumbit} buttonText={buttonText} calorie_dietRecipes={calorie_dietRecipes}/> 
                   : null 
