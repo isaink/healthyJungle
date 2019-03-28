@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom'
+import RefinedRecipes from './RefinedRecipes.js'
 import './../../styles/recipes.css';
 import React, { Component } from 'react'
 import AllergiesForm from './AllergiesForm'
@@ -51,7 +53,7 @@ displayRecipes = () => {
   let oneRecipe = this.props.allRecipes.map((recipe) => {
     return(
       <>
-            <Link to={'/' + recipe.recipe.label}>
+            <a href={'/' + recipe.recipe.label} target="_blank">
               <button id='linked_recipes'>
                 <h4> {recipe.recipe.label}</h4>
                 <img src={recipe.recipe.image} alt=""/>
@@ -70,10 +72,8 @@ displayRecipes = () => {
                     )
                   })}
                 </div>
-
-                
               </button>
-            </Link>
+            </a>
           </>
         )
       }
@@ -114,7 +114,7 @@ displayRecipes = () => {
       return this.state.userSearchResults.map((recipe) => {
       return(
        <>
-            <Link to={'/' + recipe.recipe.label}>
+            <a href={'/' + recipe.recipe.label} target="_blank">
               <button id='linked_recipes'>
                 <h4> {recipe.recipe.label}</h4>
                 <img src={recipe.recipe.image} alt=""/>
@@ -134,21 +134,21 @@ displayRecipes = () => {
                   })}
                 </div>
 
-                
+
               </button>
-            </Link>
+            </a>
           </>
       )
     })
   }
-    
+
   displayRefinedRecipes = () => {
 
     let oneRecipe = this.props.calorie_dietRecipes.map((recipe) => {
 
       return(
        <>
-            <Link to={'/' + recipe.recipe.label}>
+            <a href={'/' + recipe.recipe.label} target="_blank">
               <button id='linked_recipes'>
                 <h4> {recipe.recipe.label}</h4>
                 <img src={recipe.recipe.image} alt=""/>
@@ -168,7 +168,7 @@ displayRecipes = () => {
                   })}
                 </div>
               </button>
-            </Link>
+            </a>
           </>
       )
     })
@@ -212,7 +212,7 @@ displayRecipes = () => {
         return this.state.userSearchResults.map((recipe) => {
         return(
           <>
-            <Link to={'/' + recipe.recipe.label}>
+            <a href={'/' + recipe.recipe.label} target="_blank">
               <button id='linked_recipes'>
                 <h4> {recipe.recipe.label}</h4>
                 <img src={recipe.recipe.image} alt=""/>
@@ -231,9 +231,8 @@ displayRecipes = () => {
                     )
                   })}
                 </div>
-
               </button>
-            </Link>
+            </a>
           </>
         )
       })
@@ -245,7 +244,7 @@ displayRecipes = () => {
 
     return(
       <>
-      <Link to={'/' + recipe.recipe.label}> <button>
+      <a href={'/' + recipe.recipe.label} target="_blank"><button>
       <h4> {recipe.recipe.label}</h4>
       <img src={recipe.recipe.image} alt=""/>
       <p> {Math.round(recipe.recipe.calories, 2)} calories </p>
@@ -261,7 +260,7 @@ displayRecipes = () => {
           <li key={health}> {health} </li>
         )
       })}
-      </button></Link>
+      </button></a>
       </>
 
     )
@@ -385,7 +384,7 @@ if (this.state.submitted) {
       {this.displayRecipes()}
 
       <Link to="/"><img src="https://cdn3.iconfinder.com/data/icons/ui-essential-elements-buttons/110/Back-512.png" alt="" height='70' width='70'/></Link>
-      </div>      
+      </div>
 </>
 
   }
