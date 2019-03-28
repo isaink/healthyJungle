@@ -3,11 +3,13 @@ import RefinedRecipes from './RefinedRecipes.js'
 import './../../styles/recipes.css';
 import React, { Component } from 'react'
 import AllergiesForm from './AllergiesForm'
+import RefinedRecipes from './RefinedRecipes.js'
+import {Link} from 'react-router-dom'
 import axios from 'axios'
 const {apiId, apiKey} = require('../../secrets.js')
+
 // let bg = require('./../../img/suppliesCooking.jpg');
 let bg2 = require('./../../img/KitchenTools_Feat.png');
-
 
 class Recipes extends Component {
 
