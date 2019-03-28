@@ -1,25 +1,18 @@
 import React, { Component } from 'react';
-import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import './../../styles/home.css';
-import Checkbox from './CheckBoxes'
-import Searchbar from  './Searchbar';
-// import Recipes from './../RecipesPage/Recipes';
-// import axios from 'axios';
 
 let bg = require('./../../img/vector-banana-leaf-background.jpg');
 // const {apiId, apiKey} = require('../../secrets.js')
 
 class Home extends Component {
+  
   handleSubmit = (event) => {
     event.preventDefault()
     this.props.getRecipes()
- }
+  };
 
   render(){
-
-//     const { buttonText, searchInput,refineSearch, calorie_dietRecipes, recipeOptionTypedIn  } = this.state;
-
-
     return(
       <>
         <div className='ctnr_home' style={{backgroundImage: `url(${bg})`, backgroundSize: 'cover'}}>
@@ -42,21 +35,22 @@ class Home extends Component {
             </form>
 
           <p onClick={this.props.toggleOptions} className='refined_search'> REFINE SEARCH BY : </p>
-           <div className='options'>
-          {this.props.refineSearch ?
+          <div className='options'>
+            {this.props.refineSearch ?
           <div>
+
           <form onSubmit={this.props.onSumbit} className='form_options'>
-          <div className="caloriesCheckbox">
-            <input className="calories" onChange={this.props.allChange} type="radio" name="calories" value="under300" id="under300" /> Under 300
-            <br/>
-            <input className="calories" onChange={this.props.allChange} type="radio" name="calories" value="301-399" id="f301to399" /> 301-399
-            <br/>
-            <input className="calories" onChange={this.props.allChange} type="radio" name="calories" value="401-499" id="f401to499" /> 401-499
-            <br/>
-            <input className="calories" onChange={this.props.allChange} type="radio" name="calories" value="501-599" id="f501to599" /> 501-599
-            <br/>
-            <input className="calories" onChange={this.props.allChange} type="radio" name="calories" value="Over 600" id="over600" /> Over 600
-          </div>
+            <div className="caloriesCheckbox">
+              <input className="calories" onChange={this.props.allChange} type="radio" name="calories" value="under300" id="under300" /> Under 300
+              <br/>
+              <input className="calories" onChange={this.props.allChange} type="radio" name="calories" value="301-399" id="f301to399" /> 301-399
+              <br/>
+              <input className="calories" onChange={this.props.allChange} type="radio" name="calories" value="401-499" id="f401to499" /> 401-499
+              <br/>
+              <input className="calories" onChange={this.props.allChange} type="radio" name="calories" value="501-599" id="f501to599" /> 501-599
+              <br/>
+              <input className="calories" onChange={this.props.allChange} type="radio" name="calories" value="Over 600" id="over600" /> Over 600
+            </div>
 
           <div className="diet">
             <input className="diet" onChange={this.props.allChange} type="radio" name="diet" value="keto" id="keto" /> Keto
@@ -100,6 +94,7 @@ class Home extends Component {
           </div>
 
         </div>
+      </div>
       </>
     )
   }
