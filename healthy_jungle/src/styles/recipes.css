@@ -51,12 +51,22 @@ img{
 }
 button{
     background-color: #7fa56a;
-    /* background-color: white; */
     border-radius: 5px;
-}
-#linked_recipes{
-    background-color: white;
     margin:20px;
+}
+
+.linked_recipes{
+
+ display: grid;
+ grid-template-rows: repeat(2, 50%);
+ grid-template-columns: 
+
+}
+.cal{
+    grid-row: 1;
+}
+.diet{
+    grid-row: 2;
 }
 .ctnr_allergies{
     background: rgba(127,165,106, 0.9);

@@ -53,17 +53,22 @@ displayRecipes = () => {
     return(
       <>
             <a href={recipe.recipe.label} target="_blank">
-              <button id='linked_recipes'>
+              <button className='linked_recipes'>
                 <h4> {recipe.recipe.label}</h4>
                 <img src={recipe.recipe.image} alt=""/>
                 <div className='ctnr_info'>
-                  <p> {Math.round(recipe.recipe.calories, 2)} calories </p>
-                  <p> Dietary Information </p>
-                  {recipe.recipe.dietLabels.map((diet) => {
-                    return(
-                      <li key={diet}> {diet} </li>
-                    )
-                  })}
+                  <div className='cal'>
+                    <p> {Math.round(recipe.recipe.calories, 2)} calories </p>
+                  </div>
+                  <div className='diet'>
+                    <p> Dietary Information </p>
+                    {recipe.recipe.dietLabels.map((diet) => {
+                      return(
+                        <li key={diet}> {diet} </li>
+                      )
+                    })}
+                  </div>
+                  
                   <p> Health Label </p>
                   {recipe.recipe.healthLabels.map((health) => {
                     return(
@@ -114,7 +119,7 @@ displayRecipes = () => {
       return(
        <>
             <a href={recipe.recipe.url} target="_blank">
-              <button id='linked_recipes'>
+              <button className='linked_recipes'>
                 <h4> {recipe.recipe.label}</h4>
                 <img src={recipe.recipe.image} alt=""/>
                 <div className='ctnr_info'>
@@ -148,7 +153,7 @@ displayRecipes = () => {
       return(
        <>
             <a href={recipe.recipe.url} target="_blank">
-              <button id='linked_recipes'>
+              <button className='linked_recipes'>
                 <h4> {recipe.recipe.label}</h4>
                 <img src={recipe.recipe.image} alt=""/>
                 <div className='ctnr_info'>
