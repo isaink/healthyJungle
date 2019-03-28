@@ -93,7 +93,7 @@
 }
 
 .form_options{
-    display: grid;
+    /* display: grid; */
     grid-template-columns: 40% 90%;
     width: 50%;
     text-align: left;
