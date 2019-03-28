@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
-import {withRouter} from 'react-router-dom';
 import './../../styles/home.css';
 import Checkbox from './CheckBoxes'
 import Searchbar from  './Searchbar';
