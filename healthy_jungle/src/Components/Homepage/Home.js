@@ -49,13 +49,11 @@ class Home extends Component {
     const url = `https://api.edamam.com/search?q=${this.state.searchInput}&app_id=${apiId}&app_key=${apiKey}`
 
       axios.get(url)
-
         .then((res)=> {
           this.setState({
-            calorie_dietRecipes: res.data
+            allRecipes: res.data.hits
           })
-        })
-
+      })
   };
 
   handleChange = (event) => {
@@ -64,34 +62,6 @@ class Home extends Component {
     })
   }
 
-  findRecipe = () => {
-    let recipeSearch = this.state.allRecipes.filter(recipe => {
-      if(recipe.q.toLowerCase().includes(this.state.searchInput.toLowerCase())) {
-        return true
-      } else {
-        return false
-      }
-    })
-
-    if(recipeSearch) {
-      this.setState({
-        recipeOptionTypedIn: recipeSearch,
-        searchInput: ''
-      })
-
-    } else {
-      return <p>Not found</p>
-    }
-
-
-    if(this.state.recipeOptionTypedIn) {
-      return <Redirect to='/allrecipes/filter' />
-    } else {
-      return null
-    }
-  }
-
-  };
 
   toggleOptions = () => {
     this.setState({
@@ -112,18 +82,19 @@ class Home extends Component {
 
             <div className='options'>
                 <p onClick={this.toggleOptions}>REFINE SEARCH BY</p>
-                
-                {this.state.refineSearch 
-                  ? <Checkbox allChange={this.allChange} onSumbit={this.onSumbit} buttonText={this.state.buttonText}/> 
-                  : null 
+
+                {this.state.refineSearch
+                  ? <Checkbox allChange={this.allChange} onSumbit={this.onSumbit} buttonText={this.state.buttonText}/>
+                  : null
                 }
-      
+
             </div>
 
         </div>
       </>
     )
   }
+
 };
 
 export default Home;

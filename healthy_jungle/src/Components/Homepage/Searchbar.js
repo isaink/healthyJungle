@@ -5,7 +5,6 @@ class Searchbar extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    this.props.findRecipe()
     this.props.getRecipes()
   }
 
