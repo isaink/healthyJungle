@@ -2,20 +2,27 @@ import React, { Component } from 'react'
 import AllergiesForm from './AllergiesForm'
 
 class Recipes extends Component {
+  constructor(props){
+    super(props);
 
-  state = {
-    allergies: '',
-    checkAllergy: { gluten: false,
-    dairy: false,
-    eggs: false,
-    soy: false,
-    wheat: false,
-    fish: false,
-    shellfish: false,
-    treenuts: false,
-    peanuts: false
+    this.state = {
+      allergies: '',
+      checkAllergy: { gluten: false,
+        dairy: false,
+        eggs: false,
+        soy: false,
+        wheat: false,
+        fish: false,
+        shellfish: false,
+        treenuts: false,
+        peanuts: false
+      }
     }
   }
+componentDidMount(){
+  this.displaySearchedRecipes()
+}
+
 
   handleAllergyChange = (event) => {
     let checkAllergy = {...this.state.checkAllergy}
@@ -26,7 +33,23 @@ class Recipes extends Component {
     this.setState({checkAllergy: checkAllergy})
 }
 
-    
+displaySearchedRecipes = (props) => {
+  console.log("hello props", this.props);
+  if(this.props.allRecipes){
+
+  return this.props.allRecipes.map(recipes => {
+    return (
+
+      <div>
+
+      </div>
+    )
+  })}
+
+};
+
+
+
   render(){
     return (
       <div>
