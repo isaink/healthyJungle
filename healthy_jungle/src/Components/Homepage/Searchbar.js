@@ -21,6 +21,7 @@ class Searchbar extends Component {
           />
           <button id='bttn_search'type='submit'>Submit</button>
         </form>
+        
       </div>
     )
   }

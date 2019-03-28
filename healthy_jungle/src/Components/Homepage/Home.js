@@ -55,7 +55,7 @@ class Home extends Component {
           this.setState({
             allRecipes: res.data.hits
           })
-      })
+        })
   };
 
   handleChange = (event) => {
@@ -65,11 +65,41 @@ class Home extends Component {
   }
 
 
+  findRecipe = () => {
+    let recipeSearch = this.state.allRecipes.filter(recipe => {
+      console.log(recipe);
+      if(recipe.hits.toLowerCase().includes(this.state.searchInput.toLowerCase())) {
+        return true
+      } else {
+        return false
+      }
+    })
+
+    if(recipeSearch) {
+      this.setState({
+        recipeOptionTypedIn: recipeSearch,
+        searchInput: ''
+      })
+
+    } else {
+      return <p>Not found</p>
+    }
+
+
+    if(this.state.recipeOptionTypedIn) {
+      return <Redirect to='/allrecipes/filter' />
+    } else {
+      return null
+    }
+
+  };
+
+
   toggleOptions = () => {
     this.setState({
       refineSearch: true
     })
-  };
+  }
 
 
   render(){
@@ -81,6 +111,15 @@ class Home extends Component {
           <div className='welcome_msg'>
             <p>Your next recipe is just  <br/> lion around the corner</p>
           </div>
+
+              <Searchbar searchInput={this.state.searchInput} handleChange={this.handleChange} findRecipe={this.findRecipe} getRecipes={this.getRecipes} recipeOptionTypedIn={this.state.recipeOptionTypedIn}/>
+
+            <div className='options'>
+                <p onClick={this.toggleOptions}>REFINE SEARCH BY</p>
+
+                {this.state.refineSearch
+                  ? <Checkbox allChange={this.allChange} onSumbit={this.onSumbit} buttonText={this.state.buttonText}/>
+                  : null
               <Searchbar searchInput={searchInput} handleChange={this.handleChange} findRecipe={this.findRecipe} getRecipes={this.getRecipes}/>
 
             <div className='options'>
@@ -99,6 +138,10 @@ class Home extends Component {
     )
   }
 
+}
+
+
 };
+
 
 export default withRouter(Home);
