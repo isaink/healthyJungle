@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
+// import Recipes from './../RecipesPage/Recipes'
 import './../../styles/home.css';
 
 class Searchbar extends Component {
@@ -21,6 +23,7 @@ class Searchbar extends Component {
           />
           <button id='bttn_search'type='submit'>Submit</button>
         </form>
+
       </div>
     )
   }

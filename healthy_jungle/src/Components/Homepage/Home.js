@@ -1,75 +1,21 @@
 import React, { Component } from 'react';
+import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import './../../styles/home.css';
 import Checkbox from './CheckBoxes'
 import Searchbar from  './Searchbar';
-import { Redirect } from 'react-router-dom';
-import axios from 'axios';
+// import Recipes from './../RecipesPage/Recipes';
+// import axios from 'axios';
 let bg = require('./../../img/vector-banana-leaf-background.jpg');
-const {apiId, apiKey} = require('../../secrets.js')
+// const {apiId, apiKey} = require('../../secrets.js')
 
 
 class Home extends Component {
-  constructor(){
-    super()
-    this.state = {
-      diet: '',
-      calories: '',
-      searchInput: '',
-      allRecipes: [],
-      recipeOptionTypedIn: [],
-      buttonText: "Done",
-      calorie_dietRecipes: [],
-      refineSearch: false,
-      }
-    };
+  handleSubmit = (event) => {
+    event.preventDefault()
+    this.props.getRecipes()
 
-  allChange = (e) => {
-     this.setState({[e.target.name]:e.target.value , buttonText: "Find"})
   }
-
-  onSumbit = (e) => {
-    e.preventDefault()
-
-
-     const cal_dietUrl = `https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q=&app_id=${apiId}&app_key=${apiKey}&diet=${this.state.diet}&from=0&to=25&calories=${this.state.calories}`
-
-     axios.get(cal_dietUrl)
-       .then((res)=> {
-         this.setState({
-           calorie_dietRecipes: res.data.hits
-         })
-       })
-
-
-  };
-
-  componentDidMount() {
-    this.getRecipes()
-  }
-
-  getRecipes = () => {
-    const url = `https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q=${this.state.searchInput}&app_id=${apiId}&app_key=${apiKey}&from=0&to=25`
-
-      axios.get(url)
-        .then((res)=> {
-          this.setState({
-            allRecipes: res.data.hits
-          })
-      })
-  };
-
-  handleChange = (event) => {
-    this.setState({
-      searchInput: event.target.value
-    })
-  }
-
-
-  toggleOptions = () => {
-    this.setState({
-      refineSearch: true
-    })
-  };
 
 
   render(){
@@ -82,17 +28,80 @@ class Home extends Component {
           <div className='welcome_msg'>
             <p>Your next recipe is just  <br/> lion around the corner</p>
           </div>
-              <Searchbar searchInput={this.state.searchInput} handleChange={this.handleChange} findRecipe={this.findRecipe} getRecipes={this.getRecipes}/>
 
-            <div className='options'>
-                <p onClick={this.toggleOptions}>REFINE SEARCH BY</p>
+          <div className='searchbar-form'>
+            <form onSubmit = {this.handleSubmit}>
+              <input
+                className='input'
+                type='text'
+                onChange={this.props.handleChange}
+                placeholder='What are you hunting for ?'
+                value={this.props.searchInput}
+              />
+              <button id='bttn_search'type='submit'>Submit</button>
+            </form>
 
-                {this.state.refineSearch
-                  ? <Checkbox allChange={this.allChange} onSumbit={this.onSumbit} buttonText={this.state.buttonText}/>
-                  : null
-                }
+          </div>
 
-            </div>
+
+          <div className='options'>
+          <p onClick={this.props.toggleOptions}>REFINE SEARCH BY</p>
+
+          {this.props.refineSearch ?
+          <div>
+          <form onSubmit={this.props.onSumbit} className='form_options'>
+          <div className="caloriesCheckbox">
+            <input className="calories" onChange={this.props.allChange} type="radio" name="calories" value="under300" id="under300" /> Under 300
+            <br/>
+            <input className="calories" onChange={this.props.allChange} type="radio" name="calories" value="301-399" id="f301to399" /> 301-399
+            <br/>
+            <input className="calories" onChange={this.props.allChange} type="radio" name="calories" value="401-499" id="f401to499" /> 401-499
+            <br/>
+            <input className="calories" onChange={this.props.allChange} type="radio" name="calories" value="501-599" id="f501to599" /> 501-599
+            <br/>
+            <input className="calories" onChange={this.props.allChange} type="radio" name="calories" value="Over 600" id="over600" /> Over 600
+          </div>
+
+          <div className="diet">
+            <input className="diet" onChange={this.props.allChange} type="radio" name="diet" value="keto" id="keto" /> Keto
+            <br/>
+            <input className="diet" onChange={this.props.allChange} type="radio" name="diet" value="balanced" id="balanced" /> Balanced
+            <br/>
+            <input className="diet" onChange={this.props.allChange} type="radio" name="diet" value="dairy-free" id="dairy-free" /> Dairy-Free
+            <br/>
+            <input className="diet" onChange={this.props.allChange} type="radio" name="diet" value="Vegan" id="Vegan" /> Vegan
+            <br/>
+            <input className="diet" onChange={this.props.allChange} type="radio" name="diet" value="Vegetarian" id="Vegetarian" /> Vegetarian
+            <br/>
+            <input className="diet" onChange={this.props.allChange} type="radio" name="diet" value="low-carb" id="lowcarb" /> Low Carb
+            <br/>
+            <input className="diet" onChange={this.props.allChange} type="radio" name="diet" value="high-protein" id="highprotein" /> High Protein
+            <br/>
+            <input className="diet" onChange={this.props.allChange} type="radio" name="diet" value="gluten-free" id="glutenfree" /> Gluten-Free
+            <br/>
+            <input className="diet" onChange={this.props.allChange} type="radio" name="diet" value="high-fiber" id="highfiber" /> High Fiber
+            <br/>
+            <input className="diet" onChange={this.props.allChange} type="radio" name="diet" value="low-sugar" id="lowsugar" /> Low Sugar
+            <br/>
+            <input className="diet" onChange={this.props.allChange} type="radio" name="diet" value="low-fat" id="lowfat" /> Low Fat
+            <br/>
+            <input className="diet" onChange={this.props.allChange} type="radio" name="diet" value="lowcarb" id="lowcarb" /> Low Carb
+            <br/>
+            <input className="diet" onChange={this.props.allChange} type="radio" name="diet" value="highprotein" id="highprotein" /> High Protein
+            <br/>
+            <input className="diet" onChange={this.props.allChange} type="radio" name="diet" value="glutenfree" id="glutenfree" /> Gluten-Free
+            <br/>
+            <input className="diet" onChange={this.props.allChange} type="radio" name="diet" value="highfiber" id="highfiber" /> High Fiber
+            <br/>
+            <input className="diet" onChange={this.props.allChange} type="radio" name="diet" value="lowsugar" id="lowsugar" /> Low Sugar
+            <br/>
+            <input className="diet" onChange={this.props.allChange} type="radio" name="diet" value="lowfat" id="lowfat" /> Low Fat
+          </div>
+
+          <button>{this.props.buttonText}</button>
+          </form>
+          </div> : null }
+          </div>
 
         </div>
       </>
@@ -101,4 +110,4 @@ class Home extends Component {
 
 };
 
-export default Home
+export default withRouter(Home);
