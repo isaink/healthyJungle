@@ -49,11 +49,13 @@ class Home extends Component {
     const url = `https://api.edamam.com/search?q=${this.state.searchInput}&app_id=${apiId}&app_key=${apiKey}`
 
       axios.get(url)
-
         .then((res)=> {
           this.setState({
-            calorie_dietRecipes: res.data
+            calorie_dietRecipe: res.data
           })
+        })
+        .catch(err => {
+          return Error
         })
 
   };
@@ -66,7 +68,8 @@ class Home extends Component {
 
   findRecipe = () => {
     let recipeSearch = this.state.allRecipes.filter(recipe => {
-      if(recipe.q.toLowerCase().includes(this.state.searchInput.toLowerCase())) {
+      console.log(recipe);
+      if(recipe.hits.toLowerCase().includes(this.state.searchInput.toLowerCase())) {
         return true
       } else {
         return false
@@ -89,7 +92,6 @@ class Home extends Component {
     } else {
       return null
     }
-  }
 
   };
 
@@ -97,7 +99,7 @@ class Home extends Component {
     this.setState({
       refineSearch: true
     })
-  };
+  }
 
 
   render(){
@@ -108,22 +110,22 @@ class Home extends Component {
           <div className='welcome_msg'>
             <p>Your next recipe is just  <br/> lion around the corner</p>
           </div>
-              <Searchbar searchInput={this.state.searchInput} handleChange={this.handleChange} findRecipe={this.findRecipe} getRecipes={this.getRecipes}/>
+              <Searchbar searchInput={this.state.searchInput} handleChange={this.handleChange} findRecipe={this.findRecipe} getRecipes={this.getRecipes} recipeOptionTypedIn={this.state.recipeOptionTypedIn}/>
 
             <div className='options'>
                 <p onClick={this.toggleOptions}>REFINE SEARCH BY</p>
-                
-                {this.state.refineSearch 
-                  ? <Checkbox allChange={this.allChange} onSumbit={this.onSumbit} buttonText={this.state.buttonText}/> 
-                  : null 
+
+                {this.state.refineSearch
+                  ? <Checkbox allChange={this.allChange} onSumbit={this.onSumbit} buttonText={this.state.buttonText}/>
+                  : null
                 }
-      
+
             </div>
 
         </div>
       </>
     )
   }
-};
+}
 
 export default Home;
