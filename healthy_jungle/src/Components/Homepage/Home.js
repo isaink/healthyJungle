@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom'
+import {Switch, Route, withRouter} from 'react-router-dom';
 import './../../styles/home.css';
 import Checkbox from './CheckBoxes'
 import Searchbar from  './Searchbar';
-import { Redirect } from 'react-router-dom';
+import Recipes from './../RecipesPage/Recipes';
+// import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 let bg = require('./../../img/vector-banana-leaf-background.jpg');
 const {apiId, apiKey} = require('../../secrets.js')
@@ -73,7 +74,7 @@ class Home extends Component {
 
 
   render(){
-    const { buttonText, searchInput,refineSearch, calorie_dietRecipes  } = this.state;
+    const { buttonText, searchInput,refineSearch, calorie_dietRecipes, allRecipes  } = this.state;
 
     return(
       <>
@@ -95,6 +96,21 @@ class Home extends Component {
             </div>
 
         </div>
+
+        <Switch>
+               <Route
+                        exact path='/'
+                        render={ props => (
+                            <Recipes
+                                { ...props}
+                                allRecipes={allRecipes}
+                                calorie_dietRecipes={calorie_dietRecipes}
+                            />  
+                        )} 
+                    />
+
+
+               </Switch>
       </>
     )
   }
