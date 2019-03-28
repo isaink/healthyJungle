@@ -1,0 +1,69 @@
+.ctnr_recipes{
+    height: 980px;
+    padding: 20px;
+}
+
+.searchbar{
+    margin-bottom: 10px;
+}
+
+.searchInput{
+    width: 450px;
+    height: 37px;
+    border: none;
+    border-top-left-radius: 27px;
+    border-bottom-left-radius: 27px;
+    padding-left: 30px;
+    text-align: center;
+    background: rgba(228,213,112,.9);
+    color: #215963;
+    font-size: 10px;
+}
+
+.searchInput:focus{
+    color: #215963;
+}
+
+.searchInput::placeholder{
+    color:  #215963;
+}
+
+.searchSumbit{
+    background-color: #3d6542;
+    color: #e4d570;
+    height:  39px;
+    width: 100px;
+    border: none;
+    border-top-right-radius: 27px;
+    font-family: 'Caveat Brush', cursive;
+    font-family: 'ZCOOL XiaoWei', serif;
+    font-weight: bold;
+    font-size: 15px;
+    border-bottom-right-radius: 27px;
+    cursor: pointer;
+}
+/* .ctnr_allergies{
+  
+} */
+img{
+    width: auto;
+    height: 200px;
+}
+button{
+    background-color: #7fa56a;
+    background-color: white;
+    border-radius: 5px;
+}
+#linked_recipes{
+    background-color: beige;
+}
+.allergies{
+    width: auto;
+    height: 200px;
+}
+
+#refined_search{
+    font-family: 'Caveat Brush', cursive;
+    color: #3d6542; 
+    cursor: pointer;
+}

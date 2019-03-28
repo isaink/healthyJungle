@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import './../../styles/recipes.css'
 
 class AllergiesForm extends Component {
 
@@ -10,7 +10,7 @@ class AllergiesForm extends Component {
 
   render(){
     return (
-      <div>
+      <div className='ctnr_allergies'>
         <form onSubmit={this.handleAllergySubmit}>
         <input className="allergies" onChange={this.props.handleAllergyChange} checked={this.props.checkAllergy.gluten} type="checkbox" name="allergies" value="gluten" id="gluten" /> Gluten
         <input className="allergies" onChange={this.props.handleAllergyChange} checked={this.props.checkAllergy.dairy} type="checkbox" name="allergies" value="dairy" id="dairy" /> Dairy
@@ -26,9 +26,6 @@ class AllergiesForm extends Component {
       </div>
     )
   }
-}
-
-
-
+};
 
 export default AllergiesForm

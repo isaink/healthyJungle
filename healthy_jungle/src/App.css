@@ -1,15 +1,19 @@
 .App {
   text-align: center;
-  background-color: #47878e;
+  /* background-color: #47878e; */
+  background-color: #7fa56a;
 
 }
-
+body{
+  background-color: #7fa56a;
+}
 .app_name{
-  font-family: 'Gloria Hallelujah', cursive;
+  font-family: 'Fredericka the Great', cursive;
   font-size: 20px;
   color: beige;
-  background-color: #47878e;
-  /* background-color: beige; */
+  background-color: #7fa56a;
+  border-bottom: 4px solid beige;
+  border-top: 4px solid beige;
   margin: 0;
   padding: 0;
 }

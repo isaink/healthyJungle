@@ -64,7 +64,8 @@ class App extends Component {
     e.preventDefault()
 
 
-     const cal_dietUrl = `https://api.edamam.com/search?q=&app_id=${apiId}&app_key=${apiKey}&diet=${this.state.diet}&from=0&to=25&calories=${this.state.calories}`
+
+     const cal_dietUrl = `https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q=&app_id=${apiId}&app_key=${apiKey}&diet=${this.state.diet}&from=0&to=25&calories=${this.state.calories}`
 
      axios.get(cal_dietUrl)
        .then((res)=> {
@@ -80,7 +81,7 @@ class App extends Component {
     return (
       <div className="App" >
           <header className='app_name'>
-            <h1>HEALTHY JUNGLE</h1>
+            <h1>H E A L T H Y   <span role="img" aria-label='leaf'>🍃 </span> J U N G L E</h1>
           </header>
 
         <Switch>
@@ -99,6 +100,7 @@ class App extends Component {
           <Route path='/allrecipes/filter' render={() => {
             if (this.state.allRecipes)
             return (<Recipes allRecipes={this.state.allRecipes} recieveRecipesState={this.recieveRecipesState} searchInput={this.state.searchInput} calorie_dietRecipes={this.state.calorie_dietRecipes} />) }} />
+
         </Switch>
       </div>
     );
