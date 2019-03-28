@@ -18,7 +18,7 @@ class Home extends Component {
         <div className='ctnr_home' style={{backgroundImage: `url(${bg})`, backgroundSize: 'cover'}}>
           <div className='welcome_msg'>
               <div className='welcoming'> 
-                <p className='inner_ctnr'> <b id='quotes'>"</b> Your next recipe is just lion around the corner <b id='quotes'>"</b>  <br/> <p id='flecha'> → </p> </p>
+                <p className='inner_ctnr'> <b id='quotes'>"</b> Your next recipe is just lion around the corner <b id='quotes'>"</b>  <br/> <span id='flecha'> → </span> </p>
               </div>
           </div>
 

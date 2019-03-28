@@ -74,7 +74,7 @@ class App extends Component {
     return (
       <div className="App" >
           <header className='app_name'>
-            <h1>H E A L T H Y   <span role="img">🍃 </span> J U N G L E</h1>
+            <h1>H E A L T H Y   <span role="img" aria-label='leaf'>🍃 </span> J U N G L E</h1>
           </header>
 
         <Switch>
