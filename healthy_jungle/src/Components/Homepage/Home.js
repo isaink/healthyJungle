@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'
 import './../../styles/home.css';
 import Checkbox from './CheckBoxes'
 import Searchbar from  './Searchbar';
@@ -6,6 +7,7 @@ import Searchbar from  './Searchbar';
 import axios from 'axios';
 let bg = require('./../../img/vector-banana-leaf-background.jpg');
 const {apiId, apiKey} = require('../../secrets.js')
+
 
 class Home extends Component {
   constructor(){
@@ -85,6 +87,7 @@ class Home extends Component {
   };
 
   render(){
+    const { buttonText, searchInput,refineSearch, calorie_dietRecipes  } = this.state;
 
     return(
       <>
@@ -92,13 +95,13 @@ class Home extends Component {
           <div className='welcome_msg'>
             <p>Your next recipe is just  <br/> lion around the corner</p>
           </div>
-              <Searchbar searchInput={this.state.searchInput} handleChange={this.handleChange} findRecipe={this.findRecipe} getRecipes={this.getRecipes}/>
+              <Searchbar searchInput={searchInput} handleChange={this.handleChange} findRecipe={this.findRecipe} getRecipes={this.getRecipes}/>
 
             <div className='options'>
                 <p onClick={this.toggleOptions}>REFINE SEARCH BY</p>
                 
-                {this.state.refineSearch 
-                  ? <Checkbox allChange={this.allChange} onSumbit={this.onSumbit} buttonText={this.state.buttonText}/> 
+                {refineSearch 
+                  ? <Checkbox allChange={this.allChange} onSumbit={this.onSumbit} buttonText={buttonText} calorie_dietRecipes={calorie_dietRecipes}/> 
                   : null 
                 }
       
@@ -110,4 +113,4 @@ class Home extends Component {
   }
 };
 
-export default Home;
+export default withRouter(Home);
