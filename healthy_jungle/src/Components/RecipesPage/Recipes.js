@@ -27,7 +27,6 @@ class Recipes extends Component {
 }
 
   render(){
-    console.log( 'pros recipes', this.props)
     return (
       <div>
         <AllergiesForm handleAllergyChange={this.handleAllergyChange} checkAllergy={this.state.checkAllergy} allergies={this.state.allergies} />
