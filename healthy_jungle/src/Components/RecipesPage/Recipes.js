@@ -27,7 +27,7 @@ class Recipes extends Component {
 }
 
   render(){
-    console.log(this.props.calorie_dietRecipes, 'pros recipes')
+    console.log(this.props.allRecipes);
     return (
       <div>
         <AllergiesForm handleAllergyChange={this.handleAllergyChange} checkAllergy={this.state.checkAllergy} allergies={this.state.allergies} />

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import {Switch, Route, withRouter} from 'react-router-dom';
+import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
 import './../../styles/home.css';
 import Checkbox from './CheckBoxes'
 import Searchbar from  './Searchbar';
-import Recipes from './../RecipesPage/Recipes';
-import { Redirect } from 'react-router-dom';
+// import Recipes from './../RecipesPage/Recipes';
 import axios from 'axios';
 let bg = require('./../../img/vector-banana-leaf-background.jpg');
 const {apiId, apiKey} = require('../../secrets.js')
@@ -18,10 +17,10 @@ class Home extends Component {
       calories: '',
       searchInput: '',
       allRecipes: [],
-      recipeOptionTypedIn: [],
       buttonText: "Done",
       calorie_dietRecipes: [],
       refineSearch: false,
+      submitted: false
       }
     };
 
@@ -57,6 +56,11 @@ class Home extends Component {
             allRecipes: res.data.hits
           })
         })
+
+      this.setState({
+        submitted: true
+      })
+
   };
 
   handleChange = (event) => {
@@ -64,36 +68,6 @@ class Home extends Component {
       searchInput: event.target.value
     })
   }
-
-
-  findRecipe = () => {
-    let recipeSearch = this.state.allRecipes.filter(recipe => {
-      console.log(recipe);
-      if(recipe.hits.toLowerCase().includes(this.state.searchInput.toLowerCase())) {
-        return true
-      } else {
-        return false
-      }
-    })
-
-    if(recipeSearch) {
-      this.setState({
-        recipeOptionTypedIn: recipeSearch,
-        searchInput: ''
-      })
-
-    } else {
-      return <p>Not found</p>
-    }
-
-
-    if(this.state.recipeOptionTypedIn) {
-      return <Redirect to='/allrecipes/filter' />
-    } else {
-      return null
-    }
-
-  };
 
 
   toggleOptions = () => {
@@ -113,7 +87,7 @@ class Home extends Component {
             <p>Your next recipe is just  <br/> lion around the corner</p>
           </div>
 
-              <Searchbar searchInput={searchInput} handleChange={this.handleChange} findRecipe={this.findRecipe} getRecipes={this.getRecipes} recipeOptionTypedIn={recipeOptionTypedIn}/>
+              <Searchbar searchInput={searchInput} handleChange={this.handleChange} getRecipes={this.getRecipes} recipeOptionTypedIn={recipeOptionTypedIn} allRecipes={allRecipes} submitted={this.state.submitted}/>
 
             <div className='options'>
                 <p onClick={this.toggleOptions}>REFINE SEARCH BY</p>
@@ -126,22 +100,15 @@ class Home extends Component {
 
             </div>
 
+            <Switch>
+              <Route path='/allrecipes/filter' render={() => {
+                if(this.state.submitted) {
+                  return <Redirect to='/allrecipes/filter' />
+                }
+              }} />
+            </Switch>
+
         </div>
-
-        <Switch>
-               <Route
-                        exact path='/'
-                        render={ props => (
-                            <Recipes
-                                { ...props}
-                                allRecipes={allRecipes}
-                                calorie_dietRecipes={calorie_dietRecipes}
-                            />  
-                        )} 
-                    />
-
-
-               </Switch>
       </>
     )
   }

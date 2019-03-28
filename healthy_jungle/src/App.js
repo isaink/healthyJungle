@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import Home from './Components/Homepage/Home';
 import Recipes from './Components/RecipesPage/Recipes'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, withRouter } from 'react-router-dom'
 import './App.css';
 
 class App extends Component {
+
+
   render() {
     return (
       <div className="App" >
@@ -23,4 +25,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);
