@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Switch, Route, withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import './../../styles/home.css';
 import Checkbox from './CheckBoxes'
 import Searchbar from  './Searchbar';
@@ -31,10 +31,7 @@ class Home extends Component {
 
   onSumbit = (e) => {
     e.preventDefault()
-
-
      const cal_dietUrl = `https://api.edamam.com/search?q=&app_id=${apiId}&app_key=${apiKey}&diet=${this.state.diet}&from=0&to=25&calories=${this.state.calories}&limit=20`
-
      axios.get(cal_dietUrl)
        .then((res)=> {
          this.setState({
@@ -127,21 +124,6 @@ class Home extends Component {
             </div>
 
         </div>
-
-        <Switch>
-               <Route
-                        exact path='/'
-                        render={ props => (
-                            <Recipes
-                                { ...props}
-                                allRecipes={allRecipes}
-                                calorie_dietRecipes={calorie_dietRecipes}
-                            />  
-                        )} 
-                    />
-
-
-               </Switch>
       </>
     )
   }
