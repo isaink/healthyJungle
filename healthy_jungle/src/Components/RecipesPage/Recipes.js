@@ -14,7 +14,8 @@ class Recipes extends Component {
     shellfish: false,
     treenuts: false,
     peanuts: false
-    }
+  },
+    filteredAllergyFood: []
   }
 
   handleAllergyChange = (event) => {
