@@ -33,7 +33,7 @@ class Home extends Component {
               <button id='bttn_search'type='submit'>Submit</button>
             </form>
 
-          <p onClick={this.props.toggleOptions} className='refined_search'> REFINE SEARCH BY : </p>
+          <p onClick={this.props.toggleOptions} className='refined_search'> REFINE SEARCH BY : Calories & Diet</p>
           <div className='options'>
             {this.props.refineSearch ?
           <div>
@@ -41,6 +41,8 @@ class Home extends Component {
           <form onSubmit={this.props.onSumbit} className='form_options'>
 
           <div className="caloriesCheckbox">
+            <span className='categories_search'>CALORIES</span>
+            <br/>
             <input className="calories" onChange={this.props.allChange} type="radio" name="calories" value="0-300" id="under300" /> Under 300
             <br/>
             <input className="calories" onChange={this.props.allChange} type="radio" name="calories" value="301-399" id="f301to399" /> 301-399
@@ -53,8 +55,8 @@ class Home extends Component {
           </div>
 
           <div className="diet">
-
-
+          <span className='categories_search'>DIET</span>
+          <br/>
             <input className="diet" onChange={this.props.allChange} type="radio" name="diet" value="high-protein" id="highprotein" /> High Protein
             <br/>
             <input className="diet" onChange={this.props.allChange} type="radio" name="diet" value="high-fiber" id="highfiber" /> High Fiber
@@ -68,7 +70,7 @@ class Home extends Component {
             <input className="diet" onChange={this.props.allChange} type="radio" name="diet" value="low-sodium" id="lowsodium" /> Low Sodium
           </div>
 
-          <button>{this.props.buttonText}</button>
+          <button className='bttn_categories'>{this.props.buttonText}</button>
           </form>
           </div> : null }
           </div>

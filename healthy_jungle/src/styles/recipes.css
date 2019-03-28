@@ -1,6 +1,6 @@
 .ctnr_recipes{
     height: 980px;
-    padding: 20px;
+    /* padding: 20px; */
 }
 
 .searchbar{
@@ -51,15 +51,21 @@ img{
 }
 button{
     background-color: #7fa56a;
-    background-color: white;
+    /* background-color: white; */
     border-radius: 5px;
 }
 #linked_recipes{
     background-color: beige;
 }
-.allergies{
-    width: auto;
-    height: 200px;
+.ctnr_allergies{
+    background: rgba(127,165,106, 0.9);
+    margin: auto;
+    width: 35%;
+    padding: 5px;
+    padding-left: 10px;
+    border:none;
+    border-radius: 10px;
+    font-family: 'EB Garamond', serif;
 }
 
 #refined_search{
