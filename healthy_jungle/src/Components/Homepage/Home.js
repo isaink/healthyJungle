@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
-import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
-import {withRouter} from 'react-router-dom';
 import './../../styles/home.css';
-import Checkbox from './CheckBoxes'
-import Searchbar from  './Searchbar';
-// import Recipes from './../RecipesPage/Recipes';
-// import axios from 'axios';
+import { withRouter } from 'react-router-dom'
 let bg = require('./../../img/vector-banana-leaf-background.jpg');
 // const {apiId, apiKey} = require('../../secrets.js')
 
