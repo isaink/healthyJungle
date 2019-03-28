@@ -5,24 +5,28 @@ import Checkbox from './CheckBoxes'
 import Searchbar from  './Searchbar';
 // import Recipes from './../RecipesPage/Recipes';
 // import axios from 'axios';
+
 let bg = require('./../../img/vector-banana-leaf-background.jpg');
 // const {apiId, apiKey} = require('../../secrets.js')
-
 
 class Home extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     this.props.getRecipes()
-  }
-
+ }
 
   render(){
+
+//     const { buttonText, searchInput,refineSearch, calorie_dietRecipes, recipeOptionTypedIn  } = this.state;
+
 
     return(
       <>
         <div className='ctnr_home' style={{backgroundImage: `url(${bg})`, backgroundSize: 'cover'}}>
           <div className='welcome_msg'>
-            <p>Your next recipe is just  <br/> lion around the corner</p>
+              <div className='welcoming'> 
+                <p className='inner_ctnr'> <b id='quotes'>"</b> Your next recipe is just lion around the corner <b id='quotes'>"</b>  <br/> <p id='flecha'> → </p> </p>
+              </div>
           </div>
 
           <div className='searchbar-form'>
@@ -37,12 +41,8 @@ class Home extends Component {
               <button id='bttn_search'type='submit'>Submit</button>
             </form>
 
-          </div>
-
-
-          <div className='options'>
-          <p onClick={this.props.toggleOptions}>REFINE SEARCH BY</p>
-
+          <p onClick={this.props.toggleOptions} className='refined_search'> REFINE SEARCH BY : </p>
+           <div className='options'>
           {this.props.refineSearch ?
           <div>
           <form onSubmit={this.props.onSumbit} className='form_options'>
