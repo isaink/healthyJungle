@@ -117,14 +117,6 @@ class Home extends Component {
 
             <div className='options'>
                 <p onClick={this.toggleOptions}>REFINE SEARCH BY</p>
-
-                {this.state.refineSearch
-                  ? <Checkbox allChange={this.allChange} onSumbit={this.onSumbit} buttonText={this.state.buttonText}/>
-                  : null
-              <Searchbar searchInput={searchInput} handleChange={this.handleChange} findRecipe={this.findRecipe} getRecipes={this.getRecipes}/>
-
-            <div className='options'>
-                <p onClick={this.toggleOptions}>REFINE SEARCH BY</p>
   
                 {refineSearch 
                   ? <Checkbox allChange={this.allChange} onSumbit={this.onSumbit} buttonText={buttonText} calorie_dietRecipes={calorie_dietRecipes}/> 
@@ -153,9 +145,6 @@ class Home extends Component {
       </>
     )
   }
-
-}
-
 
 };
 
