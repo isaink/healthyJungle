@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import './../../styles/home.css';
 import Checkbox from './CheckBoxes'
 import Searchbar from  './Searchbar';
@@ -10,18 +11,9 @@ let bg = require('./../../img/vector-banana-leaf-background.jpg');
 
 
 class Home extends Component {
-
-
-
   handleSubmit = (event) => {
     event.preventDefault()
     this.props.getRecipes()
-  }
-
-  toggleOptions = () => {
-    this.setState({
-      refineSearch: true
-    })
   }
 
 
@@ -47,6 +39,7 @@ class Home extends Component {
             </form>
 
           </div>
+
 
           <div className='options'>
           <p onClick={this.props.toggleOptions}>REFINE SEARCH BY</p>
