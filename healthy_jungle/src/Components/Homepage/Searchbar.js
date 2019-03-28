@@ -8,12 +8,6 @@ class Searchbar extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     this.props.getRecipes()
-
-    if(this.props.submitted) {
-      return (
-        <Redirect to='/allrecipes/filter' />
-      )
-    }
   }
 
   render(){
