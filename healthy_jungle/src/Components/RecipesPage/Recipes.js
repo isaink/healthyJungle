@@ -5,6 +5,7 @@ class Recipes extends Component {
 
   state = {
     allergies: '',
+
     checkAllergy: { gluten: false,
     dairy: false,
     eggs: false,
@@ -13,7 +14,7 @@ class Recipes extends Component {
     fish: false,
     shellfish: false,
     treenuts: false,
-    peanuts: false
+    peanuts: false,
     }
   }
 
@@ -26,11 +27,40 @@ class Recipes extends Component {
     this.setState({checkAllergy: checkAllergy})
 }
 
+
+
+handleSubmit = event => {
+  event.preventDefault();
+  const { checkAllergy } = this.state
+  const { allRecipes, searchInput } = this.props;
+
+if(checkAllergy){
+
+  let searchResult = allRecipes.filter(recipes => {
+    return recipes.recipes.dietLabels.toLowerCase().includes(searchInput.toLowerCase());
+  });
+
+  this.setState({
+    searchResults: searchResult,
+    searchInput: "",
+    submitted: true,
+  });
+};}
+
+
   render(){
+
+
     return (
+
+      <>
+
+
       <div>
         <AllergiesForm handleAllergyChange={this.handleAllergyChange} checkAllergy={this.state.checkAllergy} allergies={this.state.allergies} />
       </div>
+
+      </>
     )
   }
 }

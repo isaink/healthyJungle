@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Home from './Components/Homepage/Home';
 import Recipes from './Components/RecipesPage/Recipes'
 import axios from 'axios'
-import { Switch, Route, withRouter } from 'react-router-dom'
+import { Switch, Route, withRouter, Redirect } from 'react-router-dom'
 const {apiId, apiKey} = require('./secrets.js')
 
 class App extends Component {
@@ -80,11 +80,27 @@ class App extends Component {
           <Route exact path='/'
             render={() => {
               return (
-                <Home getRecipes={this.getRecipes} handleChange={this.handleChange} searchInput={this.state.searchInput} allChange={this.allChange} diet={this.state.diet} calories={this.state.calories} refineSearch={this.state.refineSearch} buttonText={this.state.buttonText} toggleOptions={this.toggleOptions} onSumbit={this.onSumbit}/>
+                <Home getRecipes={this.getRecipes}
+                      handleChange={this.handleChange}
+                      searchInput={this.state.searchInput}
+                      allChange={this.allChange}
+                      diet={this.state.diet}
+                      calories={this.state.calories}
+                      refineSearch={this.state.refineSearch}
+                      buttonText={this.state.buttonText}
+                      toggleOptions={this.toggleOptions}
+                      onSumbit={this.onSumbit}
+                      />
               ) }
             } />
 
-          <Route path='/allrecipes/filter' render={() => {return (<Recipes allRecipes={this.state.allRecipes} calorie_dietRecipes={this.state.calorie_dietRecipes} />) }} />
+        < Route path='/allrecipes/filter'
+           render={() => {return (
+             <Recipes allRecipes={this.state.allRecipes}
+                      calorie_dietRecipes={this.state.calorie_dietRecipes}
+                      />
+                    ) }
+                  } />
         </Switch>
       </div>
     );
