@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
+import {Switch, Route, withRouter} from 'react-router-dom';
 import './../../styles/home.css';
 import Checkbox from './CheckBoxes'
 import Searchbar from  './Searchbar';
-
+import Recipes from './../RecipesPage/Recipes';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 let bg = require('./../../img/vector-banana-leaf-background.jpg');
 const {apiId, apiKey} = require('../../secrets.js')
+
 
 class Home extends Component {
   constructor(props){
@@ -31,12 +33,12 @@ class Home extends Component {
     e.preventDefault()
 
 
-     const cal_dietUrl = `https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q=&app_id=${apiId}&app_key=${apiKey}&calories=${this.state.calories}&diet=${this.state.diet}`
+     const cal_dietUrl = `https://api.edamam.com/search?q=&app_id=${apiId}&app_key=${apiKey}&diet=${this.state.diet}&from=0&to=25&calories=${this.state.calories}&limit=20`
 
      axios.get(cal_dietUrl)
        .then((res)=> {
          this.setState({
-           calorie_dietRecipes: res.data
+           calorie_dietRecipes: res.data.hits
          })
        })
 
@@ -46,20 +48,15 @@ class Home extends Component {
     this.getRecipes()
   }
 
-getRecipes = () => {
-  const url = `https://cors-anywhere.herokuapp.com/https://api.edamam.com/search?q=${this.state.searchInput}&app_id=${apiId}&app_key=${apiKey}`
-  axios.get(url)
-        .then(res =>{
+  getRecipes = () => {
+    const url = `https://api.edamam.com/search?q=${this.state.searchInput}&app_id=${apiId}&app_key=${apiKey}&from=0&to=25`
 
-          let searchRes = {...this.state}
-
-         // searchRes.allRecipes = res.data.hits
-         res.data.hits.forEach(info => { searchRes.allRecipes.push(info) })
-         console.log(searchRes)
-          this.setState(
-           searchRes
-        )
-    })
+      axios.get(url)
+        .then((res)=> {
+          this.setState({
+            allRecipes: res.data.hits
+          })
+        })
   };
 
   handleChange = (event) => {
@@ -68,44 +65,17 @@ getRecipes = () => {
     })
   }
 
-  findRecipe = () => {
-    if(!this.state.allRecipes) {
-      const recipeSearch = this.state.allRecipes.filter(recipe => {
-      if(recipe.q.toLowerCase().includes(this.state.searchInput.toLowerCase())) {
-        return true
-      } else {
-        return false
-      }
-    })
-
-    if(recipeSearch) {
-      this.setState({
-        recipeOptionTypedIn: recipeSearch,
-        searchInput: ''
-      })
-    }
-
-    } else {
-      return <p>Not found</p>
-    }
-    console.log("recipeOptionTypedIn", this.state.recipeOptionTypedIn);
-
-    if(this.state.recipeOptionTypedIn) {
-      return <Redirect to='/allrecipes/filter' />
-    } else {
-      return null
-    }
-  }
 
 
   toggleOptions = () => {
     this.setState({
       refineSearch: true
     })
-  };
+  }
 
 
   render(){
+    const { buttonText, searchInput,refineSearch, calorie_dietRecipes, allRecipes, recipeOptionTypedIn  } = this.state;
 
     return(
       <>
@@ -113,22 +83,41 @@ getRecipes = () => {
           <div className='welcome_msg'>
             <p>Your next recipe is just  <br/> lion around the corner</p>
           </div>
-              <Searchbar searchInput={this.state.searchInput} allRecipes={this.state.allRecipes} handleChange={this.handleChange} findRecipe={this.findRecipe} getRecipes={this.getRecipes}/>
+
+              <Searchbar searchInput={searchInput} handleChange={this.handleChange} findRecipe={this.findRecipe} getRecipes={this.getRecipes} allRecipes={allRecipes} recipeOptionTypedIn={recipeOptionTypedIn}/>
 
             <div className='options'>
                 <p onClick={this.toggleOptions}>REFINE SEARCH BY</p>
 
-                {this.state.refineSearch
-                  ? <Checkbox allChange={this.allChange} onSumbit={this.onSumbit} buttonText={this.state.buttonText}/>
+                {refineSearch
+                  ? <Checkbox allChange={this.allChange} onSumbit={this.onSumbit} buttonText={buttonText} calorie_dietRecipes={calorie_dietRecipes}/>
                   : null
+
                 }
 
             </div>
 
         </div>
+
+        <Switch>
+               <Route
+                        exact path='/'
+                        render={ props => (
+                            <Recipes
+                                { ...props}
+                                allRecipes={allRecipes}
+                                calorie_dietRecipes={calorie_dietRecipes}
+                            />
+                        )}
+                    />
+
+
+               </Switch>
       </>
     )
   }
+
 };
 
-export default Home;
+
+export default withRouter(Home);

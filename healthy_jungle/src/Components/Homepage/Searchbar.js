@@ -8,7 +8,12 @@ class Searchbar extends Component {
     this.props.getRecipes();
   };
 
-  render() {
+  handleSubmit = (event) => {
+    event.preventDefault()
+    this.props.getRecipes()
+  }
+
+  render(){
     return (
       <div className="searchbar-form">
         <form onSubmit={this.handleSubmit}>
@@ -23,7 +28,7 @@ class Searchbar extends Component {
             Submit
           </button>
         </form>
-        {this.props.allRecipes}
+
       </div>
     );
   }
