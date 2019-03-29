@@ -31,6 +31,7 @@ class Recipes extends Component {
     userSearchResults: [],
     textInput: "",
     submitted: false,
+    allergyRecipes: []
   }
 
   toggleOptions = () => {
@@ -53,7 +54,7 @@ displayRecipes = () => {
     return(
       <>
             <a href={recipe.recipe.label} target="_blank">
-              <button className='linked_recipes'>
+              <button className='linked_recipes'> 
                 <h4> {recipe.recipe.label}</h4>
                 <img src={recipe.recipe.image} alt=""/>
                 <div className='ctnr_info'>
@@ -123,13 +124,17 @@ displayRecipes = () => {
                 <h4> {recipe.recipe.label}</h4>
                 <img src={recipe.recipe.image} alt=""/>
                 <div className='ctnr_info'>
+                <div className='cal'>
                   <p> {Math.round(recipe.recipe.calories, 2)} calories </p>
+                </div>
+                <div className='diet'>
                   <p> Dietary Information </p>
                   {recipe.recipe.dietLabels.map((diet) => {
                     return(
                       <li key={diet}> {diet} </li>
                     )
                   })}
+                  </div>
                   <p> Health Label </p>
                   {recipe.recipe.healthLabels.map((health) => {
                     return(
@@ -157,13 +162,18 @@ displayRecipes = () => {
                 <h4> {recipe.recipe.label}</h4>
                 <img src={recipe.recipe.image} alt=""/>
                 <div className='ctnr_info'>
-                  <p> {Math.round(recipe.recipe.calories, 2)} calories </p>
-                  <p> Dietary Information </p>
+                <div className='cal'>
+                <p> {Math.round(recipe.recipe.calories, 2)} calories </p>
+                </div>
+                <div className='diet'>
+                <p> Dietary Information </p>
                   {recipe.recipe.dietLabels.map((diet) => {
                     return(
                       <li key={diet}> {diet} </li>
                     )
                   })}
+                </div>
+                  
                   <p> Health Label </p>
                   {recipe.recipe.healthLabels.map((health) => {
                     return(
@@ -221,7 +231,9 @@ displayRecipes = () => {
                 <h4> {recipe.recipe.label}</h4>
                 <img src={recipe.recipe.image} alt=""/>
                 <div className='ctnr_info'>
+                <div className='cal'>
                   <p> {Math.round(recipe.recipe.calories, 2)} calories </p>
+                  </div>
                   <p> Dietary Information </p>
                   {recipe.recipe.dietLabels.map((diet) => {
                     return(
@@ -312,8 +324,9 @@ handleChange = (e) => {
 
    axios.get(url)
     .then(response => {
-      console.log(response);
-      this.props.recieveRecipesState(response.data.hits)
+      this.setState({
+        allergyRecipes: response.data.hits
+      })
     })
  }
 
@@ -363,7 +376,7 @@ if (this.state.submitted) {
       <div>
         <p onClick={this.toggleOptions} id='refined_search'> REFINE SEARCH BY : Allergies </p>
         {this.state.refineSearch ?
-        <AllergiesForm handleAllergyChange={this.handleAllergyChange} checkAllergy={this.state.checkAllergy} allergies={this.state.allergies} />
+        <AllergiesForm handleAllergySearch={this.handleAllergySearch} handleAllergyChange={this.handleAllergyChange} checkAllergy={this.state.checkAllergy} allergies={this.state.allergies} />
         : null }
 </div>
       {this.displayRecipe()}
@@ -374,7 +387,7 @@ if (this.state.submitted) {
       </>
     }
       return <>
-      <div className='ctnr_recipes' style={{backgroundImage: `url(${bg2})`,  backgroundSize: `auto 100%` }}>
+      <div className='ctnr_recipes' style={{backgroundImage: `url(${bg2})`,  backgroundSize: `100%`,  backgroundRepeat: `repeat-y`, overflowY: `scroll`}}>
       <div className="searchbar">
       <form onSubmit={this.handleSubmit}>
       <input className="searchInput" onChange={this.handleChange} type="text" placeholder="Search by food title" value={this.state.textInput} />
@@ -384,7 +397,7 @@ if (this.state.submitted) {
       <div>
         <p onClick={this.toggleOptions} id='refined_search'> REFINE SEARCH BY : Allergies  </p>
         {this.state.refineSearch ?
-        <AllergiesForm handleAllergyChange={this.handleAllergyChange} checkAllergy={this.state.checkAllergy} allergies={this.state.allergies} />
+        <AllergiesForm handleAllergySearch={this.handleAllergySearch} handleAllergyChange={this.handleAllergyChange} checkAllergy={this.state.checkAllergy} allergies={this.state.allergies} />
           : null }
     </div>
       {this.displayRecipes()}

@@ -53,10 +53,11 @@ button{
     background-color: #7fa56a;
     border-radius: 5px;
     margin:20px;
+    border: solid beige 5px;
+    
 }
 
 .linked_recipes{
-
  display: grid;
  grid-template-rows: repeat(2, 50%);
  grid-template-columns: 
