@@ -9,6 +9,7 @@ Mickey always eats out instead cooking at home. However, the bills are racking u
 Mordecai just moved from NY to a new city in the Midwest for work. Until his move, he lived at home and didn’t have to worry about cooking for himself. He isn’t yet familiar with what his new home has to offer in terms of food, but it doesn’t seem to be kosher-friendly, so eating out isn’t an option. With Healthy Jungle, he has access to kosher recipes like mom used to make and a few new ones too. He’s able to see what ingredients he needs.
 
 Minimum viable product Follows:
+
 **HOMEPAGE:** 
 - Will display the checkbox options with a diet options, calories options, preferences option(certain veggies, all veggies), &allergies. 
 - Search bar for homepage when you type in keywords, recipes with those key words will display.
@@ -27,7 +28,10 @@ Minimum viable product Follows:
 - Nutrition information & percents.
 - Anomious comments
 - Random recipes to try, with the same preferences. 
+
+
 USER FLOW:
+
 **HOMEPAGE:**
 - filters out ALL RECIPES based on keyword user types in.
 - filters out ALL RECIPES what the user is looking for based off of calories and/or type of diet.
